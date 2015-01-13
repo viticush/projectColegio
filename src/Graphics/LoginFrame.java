@@ -166,8 +166,8 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFrame about = new AboutFrame();
         about.setVisible(true);
-        about.setSize(400, 400);
-        about.setLocation(500, 120);
+        
+      
         
     }//GEN-LAST:event_jAboutActionPerformed
 

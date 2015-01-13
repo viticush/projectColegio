@@ -6,7 +6,7 @@
 
 package source;
 
-import Graphics.AdminFrame;
+import Graphics.AboutFrame;
 import Graphics.LoginFrame;
 import Graphics.ProfFrame;
 
