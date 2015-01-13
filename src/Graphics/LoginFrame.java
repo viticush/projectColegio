@@ -124,6 +124,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jHelpMenu.setText("Help");
 
         jHelpContents.setText("Help contents");
+        jHelpContents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jHelpContentsActionPerformed(evt);
+            }
+        });
         jHelpMenu.add(jHelpContents);
 
         jAbout.setText("About");
@@ -175,6 +180,10 @@ public class LoginFrame extends javax.swing.JFrame {
         jTextLogin.setText(null);
         jPasswd.setText(null);
     }//GEN-LAST:event_jResetActionPerformed
+
+    private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jHelpContentsActionPerformed
 
     /**
      * @param args the command line arguments

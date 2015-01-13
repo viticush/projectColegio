@@ -19,7 +19,7 @@ public class Start {
     public static void main(String [] args){
        LoginFrame.arrancar(args);
       //AdminFrame.arrancar(args);
-      ProfFrame.arrancar(args);
+      //ProfFrame.arrancar(args);
        
     }
 }
