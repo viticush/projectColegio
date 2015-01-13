@@ -14,7 +14,7 @@ public class OracleConnection {
     //Usuario de la base de datos
     private final String USUARIO = "system";
     //Contraseña del usuario de la base de datos
-    private final String PASS = "ingSoft14";
+    private final String PASS = "software";
     //SID de la base de datos, este lo registramos en la instalacion
     private final String SID = "xe";
     //Host donde se encuentra la base de datos, para nuesto caso como es local
