@@ -6,8 +6,10 @@
 
 package graficos;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -219,24 +221,27 @@ public class LoginFrame extends javax.swing.JFrame {
          user.setNickname(jTextLogin.getText());
          user.setPassword(jPasswd.getText());
         
-       String nombre = null;
-        try {
-            OracleConnection.conectar();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
        
+       OracleConnection conexionOracle = new OracleConnection();
         try {
-            nombre = OracleConnection.consultar("select USUARIO from USUARIOS").getString(1);
+            conexionOracle.conectar();
+            Connection conn = conexionOracle.getConnection();
+            // driver@machineName:port:SID           ,  userid,  password
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery("select USUARIO from USUARIOS");
+            while (rset.next()) {
+                System.out.println(rset.getString(1));   // Print col 1
+            }
+            stmt.close();
+            conexionOracle.cerrar();
         } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OracleConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
         
       
          
-        System.out.println(nombre);
-              
+        
         
     }//GEN-LAST:event_jLoginActionPerformed
 
