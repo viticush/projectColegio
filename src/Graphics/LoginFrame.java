@@ -6,7 +6,12 @@
 
 package Graphics;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import oracleconnection.OracleConnection;
 import source.Usuario;
 
 /**
@@ -52,6 +57,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLoginMouseClicked(evt);
+            }
+        });
+        jLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLoginActionPerformed(evt);
             }
         });
 
@@ -193,10 +203,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoginMouseClicked
        
-        Usuario user = new Usuario();
-        
-        user.setNickname(jTextLogin.getText());
-        user.setPassword(jPasswd.getText());
+      
         
       
         
@@ -205,6 +212,34 @@ public class LoginFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jLoginMouseClicked
+
+    private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
+         Usuario user = new Usuario();
+        
+         user.setNickname(jTextLogin.getText());
+         user.setPassword(jPasswd.getText());
+        
+         OracleConnection a = new OracleConnection();
+        try {
+            a.conectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ResultSet resul = a.consultar("SELECT USUARIO FROM USUARIOS");
+        
+        String nombre = null;
+        
+        try {
+            nombre = resul.getString(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        System.out.println(nombre);
+              
+        
+    }//GEN-LAST:event_jLoginActionPerformed
 
     /**
      * @param args the command line arguments

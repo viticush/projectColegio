@@ -90,4 +90,30 @@ public class OracleConnection {
             Logger.getLogger(OracleConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public ResultSet consultar(String sql) {
+
+        ResultSet resultado = null;
+
+        try {
+
+            Statement sentencia;
+
+            sentencia = getConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+
+            resultado = sentencia.executeQuery(sql);
+
+            
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+            return null;
+
+        }        return resultado;
+
+    }
+
+
 }
