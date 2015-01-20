@@ -72,7 +72,7 @@ public class OracleConnection {
      * Main para comprobar que funciona, aqui hacemos un select a una tabla del
      * sistema para obtener la version.
      */
-    public static void main(String args[]) {
+    public static void startdb() {
 
         OracleConnection conexionOracle = new OracleConnection();
         try {

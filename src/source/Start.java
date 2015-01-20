@@ -9,6 +9,7 @@ package source;
 import Graphics.AboutFrame;
 import Graphics.LoginFrame;
 import Graphics.ProfFrame;
+import oracleconnection.OracleConnection;
 
 /**
  *
@@ -17,6 +18,7 @@ import Graphics.ProfFrame;
 public class Start {
    
     public static void main(String [] args){
-       LoginFrame.arrancar(args);   
+       OracleConnection.startdb();
+       LoginFrame.arrancar();   
     }
 }
