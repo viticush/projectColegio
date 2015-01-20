@@ -12,17 +12,17 @@ import oracle.jdbc.driver.OracleDriver;
 public class OracleConnection {
 
     //Usuario de la base de datos
-    private final String USUARIO = "system";
+    private static final String USUARIO = "system";
     //Contraseña del usuario de la base de datos
-    private final String PASS = "software";
+    private static final String PASS = "software";
     //SID de la base de datos, este lo registramos en la instalacion
-    private final String SID = "xe";
+    private static final String SID = "xe";
     //Host donde se encuentra la base de datos, para nuesto caso como es local
     //se indica que esta en localhost
-    private final String HOST = "localhost";
+    private static final String HOST = "localhost";
     //El puerto 1521 es el estandar para este tipo de instalaciones a menos que
     //se indicque lo contrario
-    private final int PUERTO = 1521;
+    private static final int PUERTO = 1521;
     //Objeto donde se almacenara nuestra conexion
     private static Connection connection;
 
@@ -34,7 +34,7 @@ public class OracleConnection {
      * Instanciamos un objeto de tipo OracleDriver para regitrarlo y posterior uso
      * este objeto lo provee el driver que agregamos al principio
      */
-    public void registrarDriver() throws SQLException {
+    public static void registrarDriver() throws SQLException {
         OracleDriver oracleDriver = new oracle.jdbc.driver.OracleDriver();
         DriverManager.registerDriver(oracleDriver);
     }
@@ -49,7 +49,7 @@ public class OracleConnection {
      * Finalmente obtenemos la conexion.  El metodo "getConnection"
      * lanza una excepcion la cual propagamos "throws SQLException".
      */
-    public void conectar() throws SQLException {
+    public static void conectar() throws SQLException {
         //System.out.println(connection);
         if (connection == null || connection.isClosed() == true) {
             String cadenaConexion = "jdbc:oracle:thin:@" + HOST + ":" + PUERTO + ":" + SID;

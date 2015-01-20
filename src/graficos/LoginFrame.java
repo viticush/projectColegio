@@ -221,6 +221,12 @@ public class LoginFrame extends javax.swing.JFrame {
         
        String nombre = null;
         try {
+            OracleConnection.conectar();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        try {
             nombre = OracleConnection.consultar("select USUARIO from USUARIOS").getString(1);
         } catch (SQLException ex) {
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
