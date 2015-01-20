@@ -6,9 +6,9 @@
 
 package source;
 
-import Graphics.AboutFrame;
-import Graphics.LoginFrame;
-import Graphics.ProfFrame;
+import graficos.AboutFrame;
+import graficos.LoginFrame;
+import graficos.ProfFrame;
 import oracleconnection.OracleConnection;
 
 /**

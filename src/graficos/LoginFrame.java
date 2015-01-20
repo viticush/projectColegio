@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Graphics;
+package graficos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -226,7 +226,7 @@ public class LoginFrame extends javax.swing.JFrame {
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        ResultSet resul = a.consultar("SELECT USUARIO FROM USUARIOS");
+        ResultSet resul = a.consultar("select USUARIO from USUARIOS");
         
         String nombre = null;
         
