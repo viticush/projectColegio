@@ -220,11 +220,7 @@ public class LoginFrame extends javax.swing.JFrame {
          user.setPassword(jPasswd.getText());
         
          OracleConnection a = new OracleConnection();
-        try {
-            a.conectar();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       a.startdb();
         
         ResultSet resul = a.consultar("select USUARIO from USUARIOS");
         
