@@ -7,6 +7,7 @@
 package Graphics;
 
 import javax.swing.JFrame;
+import source.Usuario;
 
 /**
  *
@@ -48,6 +49,11 @@ public class LoginFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLogin.setText("LOGIN");
+        jLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLoginMouseClicked(evt);
+            }
+        });
 
         jReset.setText("RESET");
         jReset.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +190,21 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jHelpContentsActionPerformed
+
+    private void jLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoginMouseClicked
+       
+        Usuario user = new Usuario();
+        
+        user.setNickname(jTextLogin.getText());
+        user.setPassword(jPasswd.getText());
+        
+      
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jLoginMouseClicked
 
     /**
      * @param args the command line arguments
