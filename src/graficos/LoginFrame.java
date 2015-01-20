@@ -219,18 +219,15 @@ public class LoginFrame extends javax.swing.JFrame {
          user.setNickname(jTextLogin.getText());
          user.setPassword(jPasswd.getText());
         
-         OracleConnection a = new OracleConnection();
-       a.startdb();
-        
-        ResultSet resul = a.consultar("select USUARIO from USUARIOS");
-        
-        String nombre = null;
-        
+       String nombre = null;
         try {
-            nombre = resul.getString(1);
+            nombre = OracleConnection.consultar("select USUARIO from USUARIOS").getString(1);
         } catch (SQLException ex) {
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        
+      
          
         System.out.println(nombre);
               

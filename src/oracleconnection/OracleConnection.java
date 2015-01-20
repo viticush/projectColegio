@@ -24,9 +24,9 @@ public class OracleConnection {
     //se indicque lo contrario
     private final int PUERTO = 1521;
     //Objeto donde se almacenara nuestra conexion
-    private Connection connection;
+    private static Connection connection;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 
@@ -91,7 +91,7 @@ public class OracleConnection {
         }
     }
     
-    public ResultSet consultar(String sql) {
+    public static ResultSet consultar(String sql) {
 
         ResultSet resultado = null;
 
