@@ -229,17 +229,21 @@ public class LoginFrame extends javax.swing.JFrame {
             
             OracleConection conexionOracle = new OracleConection();
             ResultSet consulta = conexionOracle
-                    .consultar("select contraseña from USUARIOS where nombre='"+user.getNickname()+"'");
+                    .consultar("select contraseña from USUARIOS where usuario='"+user.getNickname()+"'");
             
             consulta.next();
-            System.out.println(consulta.getString(1));
-            
-            
-            java.awt.EventQueue.invokeLater(new Runnable() {
+           if(user.getPassword().equals(consulta.getString(1))){
+               
+               java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
                 public void run() {
                     new UserFrame().setVisible(true);
                 }
             });
+           }
+            
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
