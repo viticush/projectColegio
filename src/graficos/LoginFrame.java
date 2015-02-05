@@ -231,7 +231,7 @@ public class LoginFrame extends javax.swing.JFrame {
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("select * from USUARIOS");
             while (rset.next()) {
-                System.out.println(rset.getString(1));   // Print col 1
+                System.out.println(rset.getString(2));   // Print col 1
             }
             stmt.close();
             conexionOracle.cerrar();
