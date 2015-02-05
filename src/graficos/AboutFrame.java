@@ -17,7 +17,7 @@ public class AboutFrame extends javax.swing.JFrame {
      */
     public AboutFrame() {
         initComponents();
-        this.setSize(400, 400);
+        this.setSize(400, 200);
         this.setLocation(500, 120);
         
         

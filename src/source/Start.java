@@ -8,7 +8,7 @@ package source;
 
 import graficos.AboutFrame;
 import graficos.LoginFrame;
-import graficos.ProfFrame;
+import graficos.UserFrame;
 import oracleconnection.OracleConnection;
 
 /**
