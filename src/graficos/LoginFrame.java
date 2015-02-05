@@ -229,7 +229,7 @@ public class LoginFrame extends javax.swing.JFrame {
             Connection conn = conexionOracle.getConnection();
             // driver@machineName:port:SID           ,  userid,  password
             Statement stmt = conn.createStatement();
-            ResultSet rset = stmt.executeQuery("select USUARIO from USUARIOS");
+            ResultSet rset = stmt.executeQuery("select * from USUARIOS");
             while (rset.next()) {
                 System.out.println(rset.getString(1));   // Print col 1
             }

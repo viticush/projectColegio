@@ -12,7 +12,7 @@ import oracle.jdbc.driver.OracleDriver;
 public class OracleConnection {
 
     //Usuario de la base de datos
-    private static final String USUARIO = "system";
+    private static final String USUARIO = "software";
     //Contraseña del usuario de la base de datos
     private static final String PASS = "software";
     //SID de la base de datos, este lo registramos en la instalacion
