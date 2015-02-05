@@ -9,10 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import oracle.jdbc.driver.OracleDriver;
 
-public class OracleConnection {
+public class OracleConection {
 
     //Usuario de la base de datos
-    private static final String USUARIO = "colegio";
+    private static final String USUARIO = "software";
     //Contraseña del usuario de la base de datos
     private static final String PASS = "software";
     //SID de la base de datos, este lo registramos en la instalacion
@@ -24,38 +24,31 @@ public class OracleConnection {
     //se indicque lo contrario
     private static final int PUERTO = 1521;
     //Objeto donde se almacenara nuestra conexion
-    private static Connection connection;
+    private static Connection conection;
 
-    public static Connection getConnection() {
-        return connection;
-    }
-
-    /*
-     * Instanciamos un objeto de tipo OracleDriver para regitrarlo y posterior uso
-     * este objeto lo provee el driver que agregamos al principio
-     */
-    public static void registrarDriver() throws SQLException {
-        OracleDriver oracleDriver = new oracle.jdbc.driver.OracleDriver();
-        DriverManager.registerDriver(oracleDriver);
-    }
-
-    /*
-     * Procedemos a realizar nuestra conexion a la base datos, para esto nos
-     * aseguramos que el objeto este null o que este cerrada la conexion.
-     * 
-     * cadanaConexion: es un string que se contruye a partir de los atributos
-     * definidos.
-     * 
-     * Finalmente obtenemos la conexion.  El metodo "getConnection"
-     * lanza una excepcion la cual propagamos "throws SQLException".
-     */
-    public static void conectar() throws SQLException {
-        //System.out.println(connection);
-        if (connection == null || connection.isClosed() == true) {
-            String cadenaConexion = "jdbc:oracle:thin:@" + HOST + ":" + PUERTO + ":" + SID;
-            registrarDriver();
-            connection = DriverManager.getConnection(cadenaConexion, USUARIO, PASS);
+   public Connection getConexion() throws SQLException {
+        if (conection == null || conection.isClosed()) {
+            this.conectar();
         }
+        return conection;
+    }
+
+   
+
+  
+   
+    private OracleConection conectar() {
+        try {
+            Class.forName("oracle.jdbc.OracleDriver");
+
+            String cadenaConexion = "jdbc:oracle:thin:@" + HOST + ":" + PUERTO + ":" + SID;
+            //BD == nombre y usuario de la base de datos
+            //123 == contraseña de acceso
+            conection = DriverManager.getConnection(cadenaConexion, USUARIO, PASS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 
     /*
@@ -63,8 +56,8 @@ public class OracleConnection {
      * base de datos
      */
     public void cerrar() throws SQLException {
-        if (connection != null && connection.isClosed() == false) {
-            connection.close();
+        if (conection != null && conection.isClosed() == false) {
+            conection.close();
         }
     }
 
@@ -74,10 +67,10 @@ public class OracleConnection {
      */
     public static void startdb() {
 
-        OracleConnection conexionOracle = new OracleConnection();
+        OracleConection conexionOracle = new OracleConection();
         try {
             conexionOracle.conectar();
-            Connection conn = conexionOracle.getConnection();
+            Connection conn = conexionOracle.getConexion();
             // driver@machineName:port:SID           ,  userid,  password
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
@@ -87,32 +80,21 @@ public class OracleConnection {
             stmt.close();
             conexionOracle.cerrar();
         } catch (SQLException ex) {
-            Logger.getLogger(OracleConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OracleConection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static ResultSet consultar(String sql) {
-
+   public ResultSet consultar(String sql) throws SQLException {
         ResultSet resultado = null;
-
         try {
-
             Statement sentencia;
-
-            sentencia = getConnection().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-
+            sentencia = getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
             resultado = sentencia.executeQuery(sql);
-
-            
-
+            //getConexion().commit();
         } catch (SQLException e) {
-
             e.printStackTrace();
-
-            return null;
-
-        }        return resultado;
-
+        }
+        return resultado;
     }
 
 

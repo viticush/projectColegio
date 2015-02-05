@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import oracleconnection.OracleConnection;
+import oracleconnection.OracleConection;
 import source.Usuario;
 
 /**
@@ -219,35 +219,30 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginMouseClicked
 
     private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
-         Usuario user = new Usuario();
-        
-         user.setNickname(jTextLogin.getText());
-         user.setPassword(jPasswd.getText());
-        
-      
-       
-       OracleConnection conexionOracle = new OracleConnection();
         try {
-            conexionOracle.conectar();
-            Connection conn = conexionOracle.getConnection();
-            // driver@machineName:port:SID           ,  userid,  password
-            Statement stmt = conn.createStatement();
-            ResultSet rset = stmt.executeQuery("select * from USUARIOS");
-            while (rset.next()) {
-                System.out.println(rset.getString(2));   // Print col 1
-            }
-            stmt.close();
-            conexionOracle.cerrar();
+            Usuario user = new Usuario();
+            
+            user.setNickname(jTextLogin.getText());
+            user.setPassword(jPasswd.getText());
+            
+            
+            
+            OracleConection conexionOracle = new OracleConection();
+            ResultSet consulta = conexionOracle
+                    .consultar("select contraseña from USUARIOS where nombre='"+user.getNickname()+"'");
+            
+            consulta.next();
+            System.out.println(consulta.getString(1));
+            
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new UserFrame().setVisible(true);
+                }
+            });
         } catch (SQLException ex) {
-            Logger.getLogger(OracleConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-                new UserFrame().setVisible(true);
-            }
-        });
       
          
         
