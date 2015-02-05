@@ -220,14 +220,14 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
         try {
-            Usuario user = new Usuario();
+            final Usuario user = new Usuario();
             
             user.setNickname(jTextLogin.getText());
             user.setPassword(jPasswd.getText());
             
             
             
-            OracleConection conexionOracle = new OracleConection();
+            final OracleConection conexionOracle = new OracleConection();
             ResultSet consulta = conexionOracle
                     .consultar("select contraseña from USUARIOS where usuario='"+user.getNickname()+"'");
             
@@ -238,6 +238,18 @@ public class LoginFrame extends javax.swing.JFrame {
                 @Override
                 public void run() {
                     new UserFrame().setVisible(true);
+                    try {
+                        ResultSet c = conexionOracle
+                                .consultar("select rol from USUARIOS where usuario='"+user.getNickname()+"'");
+                        c.next();
+                        if(c.getString(1).equals("1")){
+                            UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
+                            UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
+                        }
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             });
            }
