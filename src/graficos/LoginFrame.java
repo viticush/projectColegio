@@ -234,10 +234,19 @@ public class LoginFrame extends javax.swing.JFrame {
            
           
            if(user.getPassword().equals(contraseñaUsuario)){
-               UserFrame u = new UserFrame();
+               
                                 
                 if(c.getRol(user.getNickname()).equals("1")){
-                    u.arrancarProfe();
+                    UserFrame u = new UserFrame(1);
+                    u.arrancarProfe(1);
+                }
+                if(c.getRol(user.getNickname()).equals("2")){
+                    UserFrame u = new UserFrame(2);
+                    u.arrancarProfe(2);
+                }
+                if(c.getRol(user.getNickname()).equals("3")){
+                    UserFrame u = new UserFrame(3);
+                    u.arrancarProfe(3);
                 }
                         
                  
