@@ -3,10 +3,14 @@
 PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
 "http://java.sun.com/products/javahelp/map_2_0.dtd">
 <map version="1.0">
-	<mapID target="ventana_secundaria" url="html/general.html" />
-	<mapID target="aplicacion" url="html/principal.html" />
-	<mapID target="ventana_principal" url="html/login.html" />
-	<mapID target="ventana_secundaria" url="html/exportar.html" />
-	<mapID target="ventana_secundaria" url="html/importar.html" />
-	<mapID target="ventana_secundaria" url="html/alumnado.html" />
+	<mapID target="aplicacion" url="html/main.html" />
+	<mapID target="ventana_login" url="html/login.html" />
+	<mapID target="ventana_trabajo" url="html/trabajo.html" />
+	<mapID target="ventana_admin_alumnado" url="html/alumnado.html" />
+	<mapID target="ventana_jefatura" url="html/jefatura.html" />
+	<mapID target="ventana_profesorado" url="html/profesorado.html" />
+	<mapID target="ventana_secretaria" url="html/secretaria.html" />
+	<mapID target="ventana_importar" url="html/importar.html" />
+	<mapID target="ventana_exportar" url="html/exportar.html" />
+
 </map>

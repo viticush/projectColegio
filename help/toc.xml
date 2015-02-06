@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <toc version="1.0">
-   <tocitem text="Colegio" target="general">
-      <tocitem text="Ventana login" target="Login"/>
+   <tocitem text="ProgramaColegio" target="aplicacion">
+      <tocitem text="Ventana login" target="ventana_login"/>
       <tocitem text="Ventana trabajo" target="ventana_trabajo"/>
-	  <tocitem text="Ventana alumnado" target="ventana_administrar_alum"/>
+	  <tocitem text="Ventana alumnado" target="ventana_admin_alumnado"/>
+	  <tocitem text="Ventana profesorado" target="ventana_profesorado"/>
+	  <tocitem text="Ventana jefatura" target="ventana_jefatura"/>
+	  <tocitem text="Ventana secretaria" target="ventana_secretaria"/>
 	  <tocitem text="Ventana importar backup" target="ventana_importar"/>
 	  <tocitem text="Ventana exportar backup" target="ventana_exportar"/>
-
    </tocitem>
 </toc>

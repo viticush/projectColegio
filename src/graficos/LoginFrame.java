@@ -217,8 +217,8 @@ public class LoginFrame extends javax.swing.JFrame {
             URL hsURL = fichero.toURI().toURL();
             helpset = new HelpSet(getClass().getClassLoader(), hsURL);
             hb = helpset.createHelpBroker();
-            hb.enableHelpKey(this.getContentPane(), "general", helpset);
-            hb.enableHelpOnButton(jHelpContents, "ventana_principal", helpset);
+            hb.enableHelpKey(this.getContentPane(), "ventana_general", helpset);
+            hb.enableHelpOnButton(jHelpContents, "aplicacion", helpset);
         } catch (Exception e) {
             //Logger.getLogger(Logueo.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error al cargar la ayuda" + e);

@@ -3,14 +3,12 @@
 PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN"
 "http://java.sun.com/products/javahelp/index_1_0.dtd">
 <index version="1.0">
-	<indexitem text="" target="general"/>
-	<indexitem text="Ventana login" target="ventana_login"/>
-	<indexitem text="Ventana general" target="ventana_general"/>
-	<indexitem text="Ventana gestion alumnado" target="ventana_admin_alum"/>
-	<indexitem text="Ventana jefatura" target="ventana_mod_contra"/>
-	<indexitem text="Ventana secretaria" target="ventana_ges_festivo"/>
-	<indexitem text="Ventana profesorado" target="ventana_ges_festivo"/>
-	<indexitem text="Ventana importar backup" target="ventana_importar"/>
+	<indexitem text="Breve explicacion" target="aplicacion"/>
 	<indexitem text="Ventana exportar backup" target="ventana_exportar"/>
-
+	<indexitem text="Ventana gestion alumnado" target="ventana_admin_alum"/>
+	<indexitem text="Ventana importar backup" target="ventana_importar"/>
+	<indexitem text="Ventana jefatura" target="ventana_mod_contra"/>
+	<indexitem text="Ventana login" target="ventana_login"/>
+	<indexitem text="Ventana profesorado" target="ventana_profesorado"/>
+	<indexitem text="Ventana secretaria" target="ventana_secretaria"/>
 </index>
