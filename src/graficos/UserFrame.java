@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  */
 public class UserFrame extends javax.swing.JFrame {
 
+   
     /**
      * Creates new form ProfFrame
      */
@@ -188,7 +189,7 @@ public class UserFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void arrancar(String args[]) {
+    public  void arrancarProfe() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -216,6 +217,8 @@ public class UserFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserFrame().setVisible(true);
+                 jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
+                 jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
             }
         });
     }
