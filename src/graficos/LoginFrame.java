@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import oracleconnection.OracleConection;
+import source.Consultas;
 import source.Usuario;
 
 /**
@@ -220,46 +221,42 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLoginMouseClicked
 
     private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
-        try {
+        
             final Usuario user = new Usuario();
             
             user.setNickname(jTextLogin.getText());
             user.setPassword(jPasswd.getText());
             
+            Consultas c = new Consultas();
             
-            
-            final OracleConection conexionOracle = new OracleConection();
-            ResultSet consulta = conexionOracle
-                    .consultar("select contraseña from USUARIOS where usuario='"+user.getNickname()+"'");
-            
-            consulta.next();
-           if(user.getPassword().equals(consulta.getString(1))){
+            String contraseñaUsuario = c.getContraseña(user.getNickname());
+          
+           if(user.getPassword().equals(contraseñaUsuario)){
                
                java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     new UserFrame().setVisible(true);
-                    try {
+                   /* try {
                         ResultSet c = conexionOracle
                                 .consultar("select rol from USUARIOS where usuario='"+user.getNickname()+"'");
                         c.next();
-                        if(c.getString(1).equals("1")){
+                       /* if(c.getString(1).equals("1")){
                             UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
                             UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
                         }
                         
                     } catch (SQLException ex) {
                         Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    }*/
                 }
             });
            }
             
             
             
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+      
       
          
         
