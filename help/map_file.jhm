@@ -8,5 +8,5 @@ PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
 	<mapID target="ventana_principal" url="html/login.html" />
 	<mapID target="ventana_secundaria" url="html/exportar.html" />
 	<mapID target="ventana_secundaria" url="html/importar.html" />
-	<mapID target="ventana_secundaria" url="html/usuarios.html" />
+	<mapID target="ventana_secundaria" url="html/alumnado.html" />
 </map>

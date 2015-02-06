@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE index
+PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN"
+"http://java.sun.com/products/javahelp/index_1_0.dtd">
+<index version="1.0">
+   <indexitem text="" target="general"/>
+   <indexitem text="Ventana logueo" target="ventana_logueo"/>
+   <indexitem text="Ventana principal" target="ventana_principal"/>
+   <indexitem text="Ventana gestion usuarios" target="ventana_administrar_usr"/>
+   <indexitem text="Ventana modificar contraseña" target="ventana_mod_contra"/>
+   <indexitem text="Ventana gestion festivos" target="ventana_ges_festivo"/>
+   <indexitem text="Ventana importar backup" target="ventana_importar"/>
+   <indexitem text="Ventana exportar backup" target="ventana_exportar"/>
+
+</index>
