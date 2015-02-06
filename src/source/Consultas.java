@@ -37,4 +37,21 @@ public class Consultas {
         return resultado;
     }
     
+     public String getRol(String nombre){
+        ResultSet consulta = null;
+        String resultado = null;
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select rol from usuarios where usuario='"+nombre+"'");
+            consulta.next();
+            resultado = consulta.getString(1);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+     
+      
+    
 }
