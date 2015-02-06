@@ -111,7 +111,7 @@ public class UserFrame extends javax.swing.JFrame {
 
         jFile.setText("File");
 
-        jMenuItem1.setText("Cerrar sesión");
+        jMenuItem1.setText("Logout");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
