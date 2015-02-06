@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<toc version="1.0">
+   <tocitem text="Colegio" target="general">
+      <tocitem text="Ventana login" target="Login"/>
+      <tocitem text="Ventana principal" target="ventana_principal"/>
+	  <tocitem text="Ventana usuarios" target="ventana_administrar_alum"/>
+	  <tocitem text="Ventana importar backup" target="ventana_importar"/>
+	  <tocitem text="Ventana exportar backup" target="ventana_exportar"/>
+
+   </tocitem>
+</toc>
