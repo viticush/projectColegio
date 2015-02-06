@@ -18,10 +18,27 @@ public class UserFrame extends javax.swing.JFrame {
     /**
      * Creates new form ProfFrame
      */
-    public UserFrame() {
+    public UserFrame(int tipo) {
         initComponents();
         this.setSize(400, 400);
         this.setLocation(500, 150);
+        switch(tipo){
+                case 1:
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
+                    jTabbedPane4.setSelectedComponent(jPanel4);
+                    break;
+                case 2:
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel4), false);
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
+                    jTabbedPane4.setSelectedComponent(jPanel3);
+                    break;
+                case 3:
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel4), false);
+                    jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
+                    jTabbedPane4.setSelectedComponent(jPanel1);
+                    break;
+        }
     }
 
     /**
@@ -189,7 +206,7 @@ public class UserFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public  void arrancarProfe() {
+    public  void arrancarProfe(final int tipo) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -216,9 +233,9 @@ public class UserFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserFrame().setVisible(true);
-                 jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
-                 jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
+                new UserFrame(tipo).setVisible(true);
+                
+                 
             }
         });
     }
