@@ -60,7 +60,6 @@ public class UserFrame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jHelpMenu = new javax.swing.JMenu();
         jHelpContents = new javax.swing.JMenuItem();
         jAbout = new javax.swing.JMenuItem();
@@ -137,14 +136,6 @@ public class UserFrame extends javax.swing.JFrame {
         });
         jFile.add(jMenuItem1);
 
-        jMenuItem2.setText("Quit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jFile.add(jMenuItem2);
-
         jMenuBar1.add(jFile);
 
         jHelpMenu.setText("Help");
@@ -182,11 +173,6 @@ public class UserFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
         // TODO add your handling code here:
@@ -250,7 +236,6 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
