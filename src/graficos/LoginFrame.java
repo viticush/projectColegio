@@ -6,12 +6,16 @@
 
 package graficos;
 
+import java.io.File;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.JFrame;
 import oracleconnection.OracleConection;
 import source.Consultas;
@@ -205,7 +209,20 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
         // TODO add your handling code here:
-        
+       
+          HelpBroker hb;
+          HelpSet helpset ;
+         try {
+            File fichero = new File("help/help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+            helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            hb = helpset.createHelpBroker();
+            hb.enableHelpKey(this.getContentPane(), "general", helpset);
+            hb.enableHelpOnButton(jHelpContents, "ventana_principal", helpset);
+        } catch (Exception e) {
+            //Logger.getLogger(Logueo.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al cargar la ayuda" + e);
+        }
     }//GEN-LAST:event_jHelpContentsActionPerformed
 
     private void jLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoginMouseClicked
