@@ -27,7 +27,7 @@ public class Consultas {
         String resultado = null;
         try {
            consulta = conexionBaseDeDatos
-                    .consultar("select contraseña from usuarios where nombre='"+nombre+"'");
+                    .consultar("select contraseña from usuarios where usuario='"+nombre+"'");
             consulta.next();
             resultado = consulta.getString(1);
            
