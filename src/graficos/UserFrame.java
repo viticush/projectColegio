@@ -41,6 +41,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jFile = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jHelpMenu = new javax.swing.JMenu();
         jHelpContents = new javax.swing.JMenuItem();
@@ -110,6 +111,14 @@ public class UserFrame extends javax.swing.JFrame {
 
         jFile.setText("File");
 
+        jMenuItem1.setText("Cerrar sesión");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jFile.add(jMenuItem1);
+
         jMenuItem2.setText("Quit");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +181,10 @@ public class UserFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jAboutActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +229,7 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

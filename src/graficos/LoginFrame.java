@@ -204,6 +204,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jHelpContentsActionPerformed
 
     private void jLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLoginMouseClicked
