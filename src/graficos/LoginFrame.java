@@ -230,27 +230,18 @@ public class LoginFrame extends javax.swing.JFrame {
             Consultas c = new Consultas();
             
             String contraseñaUsuario = c.getContraseña(user.getNickname());
+            
+           
           
            if(user.getPassword().equals(contraseñaUsuario)){
-               
-               java.awt.EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    new UserFrame().setVisible(true);
-                   /* try {
-                        ResultSet c = conexionOracle
-                                .consultar("select rol from USUARIOS where usuario='"+user.getNickname()+"'");
-                        c.next();
-                       /* if(c.getString(1).equals("1")){
-                            UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel3), false);
-                            UserFrame.jTabbedPane4.setEnabledAt(jTabbedPane4.indexOfComponent(jPanel1), false);
-                        }
-                        
-                    } catch (SQLException ex) {
-                        Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
-                    }*/
+               UserFrame u = new UserFrame();
+                                
+                if(c.getRol(user.getNickname()).equals("1")){
+                    u.arrancarProfe();
                 }
-            });
+                        
+                 
+            
            }
             
             
