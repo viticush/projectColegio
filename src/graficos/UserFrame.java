@@ -250,9 +250,14 @@ public class UserFrame extends javax.swing.JFrame {
 
         jButton5.setText("Consultar notas");
 
-        jButton6.setText("Consultar notas");
+        jButton6.setText("Gestionar partes");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("Partes expulsión");
+        jButton7.setText("Consultar notas");
 
         jButton8.setText("Consultar guardias");
 
@@ -639,6 +644,10 @@ public class UserFrame extends javax.swing.JFrame {
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
