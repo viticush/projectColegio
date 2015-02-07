@@ -6,6 +6,10 @@
 
 package graficos;
 
+import java.io.File;
+import java.net.URL;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.JFrame;
 
 /**
@@ -176,6 +180,19 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHelpContentsActionPerformed
         // TODO add your handling code here:
+        HelpBroker hb;
+          HelpSet helpset ;
+         try {
+            File fichero = new File("help/help_set.hs");
+            URL hsURL = fichero.toURI().toURL();
+            helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+            hb = helpset.createHelpBroker();
+            hb.enableHelpKey(this.getContentPane(), "ventana_general", helpset);
+            hb.enableHelpOnButton(jHelpContents, "aplicacion", helpset);
+        } catch (Exception e) {
+            //Logger.getLogger(Logueo.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al cargar la ayuda" + e);
+        }
     }//GEN-LAST:event_jHelpContentsActionPerformed
 
     private void jAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAboutActionPerformed
@@ -187,6 +204,8 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        this.hide();
+        //HACER AQUÍ EL VISIBLE TRUE DE LOGINFRAME¿?
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -220,6 +239,7 @@ public class UserFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserFrame(tipo).setVisible(true);
+                
                 
                  
             }

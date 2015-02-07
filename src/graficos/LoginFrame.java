@@ -239,45 +239,29 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
         
-            final Usuario user = new Usuario();
+    final Usuario user = new Usuario();
+    user.setNickname(jTextLogin.getText());
+    user.setPassword(jPasswd.getText());
             
-            user.setNickname(jTextLogin.getText());
-            user.setPassword(jPasswd.getText());
+    Consultas c = new Consultas();
+    String contraseñaUsuario = c.getContraseña(user.getNickname());
             
-            Consultas c = new Consultas();
-            
-            String contraseñaUsuario = c.getContraseña(user.getNickname());
-            
-           
-          
-           if(user.getPassword().equals(contraseñaUsuario)){
-               
-                                
-                if(c.getRol(user.getNickname()).equals("1")){
-                    UserFrame u = new UserFrame(1);
-                    u.arrancarProfe(1);
-                }
-                if(c.getRol(user.getNickname()).equals("2")){
-                    UserFrame u = new UserFrame(2);
-                    u.arrancarProfe(2);
-                }
-                if(c.getRol(user.getNickname()).equals("3")){
-                    UserFrame u = new UserFrame(3);
-                    u.arrancarProfe(3);
-                }
-                        
-                 
-            
-           }
-            
-            
-            
+    if(user.getPassword().equals(contraseñaUsuario)){
+        if(c.getRol(user.getNickname()).equals("1")){
+            UserFrame u = new UserFrame(1);
+            u.arrancarProfe(1);
+        }
+        if(c.getRol(user.getNickname()).equals("2")){
+            UserFrame u = new UserFrame(2);
+            u.arrancarProfe(2);
+        }
+        if(c.getRol(user.getNickname()).equals("3")){
+            UserFrame u = new UserFrame(3);
+            u.arrancarProfe(3);
+        }
+    }
        
-      
-      
-         
-        
-        
+    //this.setVisible(false);
     }//GEN-LAST:event_jLoginActionPerformed
 
     /**
