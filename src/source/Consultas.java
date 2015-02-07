@@ -53,7 +53,7 @@ public class Consultas {
     }
      public String[] getDatosProfesor(String dni){
         ResultSet consulta = null;
-        String[] resultado = null;
+        String[] resultado = new String[20];
         try {
            consulta = conexionBaseDeDatos
                     .consultar("select * from alumnos where dni='"+dni+"'");
