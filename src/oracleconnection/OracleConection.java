@@ -7,12 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import oracle.jdbc.driver.OracleDriver;
 
 public class OracleConection {
 
     //Usuario de la base de datos
-    private static final String USUARIO = "colegio";
+    private static final String USUARIO = "software";
     //Contraseña del usuario de la base de datos
     private static final String PASS = "software";
     //SID de la base de datos, este lo registramos en la instalacion

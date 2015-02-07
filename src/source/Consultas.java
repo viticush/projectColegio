@@ -51,6 +51,22 @@ public class Consultas {
         }
         return resultado;
     }
+     public String[] getDatosProfesor(String dni){
+        ResultSet consulta = null;
+        String[] resultado = null;
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select * from alumnos where usuario='"+dni+"'");
+            consulta.next();
+            resultado[0] = consulta.getString("nombre");
+            resultado[1] = consulta.getString("apellidos");
+            resultado[2] = consulta.getString("faltas");
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
      
       
     

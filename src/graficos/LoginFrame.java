@@ -248,17 +248,20 @@ public class LoginFrame extends javax.swing.JFrame {
             
     if(user.getPassword().equals(contraseñaUsuario)){
         if(c.getRol(user.getNickname()).equals("1")){
-            UserFrame u = new UserFrame(1);
-            u.arrancarProfe(1);
+            UserFrame u = new UserFrame(1, this);
+            u.arrancarProfe(1, this);
         }
         if(c.getRol(user.getNickname()).equals("2")){
-            UserFrame u = new UserFrame(2);
-            u.arrancarProfe(2);
+            UserFrame u = new UserFrame(2, this);
+            u.arrancarProfe(2, this);
         }
         if(c.getRol(user.getNickname()).equals("3")){
-            UserFrame u = new UserFrame(3);
-            u.arrancarProfe(3);
+            UserFrame u = new UserFrame(3, this);
+            u.arrancarProfe(3, this);
         }
+        this.setVisible(false);
+        jTextLogin.setText("");
+        jPasswd.setText("");
     }
        
     //this.setVisible(false);
