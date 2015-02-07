@@ -56,7 +56,7 @@ public class Consultas {
         String[] resultado = null;
         try {
            consulta = conexionBaseDeDatos
-                    .consultar("select * from alumnos where usuario='"+dni+"'");
+                    .consultar("select * from alumnos where dni='"+dni+"'");
             consulta.next();
             resultado[0] = consulta.getString("nombre");
             resultado[1] = consulta.getString("apellidos");
