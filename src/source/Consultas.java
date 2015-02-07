@@ -61,6 +61,36 @@ public class Consultas {
             resultado[0] = consulta.getString("nombre");
             resultado[1] = consulta.getString("apellidos");
             resultado[2] = consulta.getString("faltas");
+            resultado[3] = consulta.getString("observaciones");
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+     
+    public String[] getDatosJefatura(String dni){
+        ResultSet consulta = null;
+        String[] resultado = new String[20];
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select * from alumnos where dni='"+dni+"'");
+            consulta.next();
+            resultado[0] = consulta.getString("nombre");
+            resultado[1] = consulta.getString("apellidos");
+            resultado[2] = consulta.getString("faltas");
+            resultado[3] = consulta.getString("partes_expulsion");
+            resultado[4] = consulta.getString("curso");
+            consulta.close();
+            consulta = conexionBaseDeDatos
+                     .consultar("desc notas");
+            int i = 5;
+            while(consulta.next()){
+                
+                resultado[i] = consulta.getString("column");
+                i++;
+                
+            }
            
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);

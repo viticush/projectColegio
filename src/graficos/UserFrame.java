@@ -288,6 +288,11 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel9.setText("DNI:");
 
         jButton10.setText("Buscar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Nombre:");
 
@@ -714,14 +719,32 @@ public class UserFrame extends javax.swing.JFrame {
         String[] campos = new String[20];
         String d = jTextField1.getText();
         campos = consulta.getDatosProfesor(d);
-        System.out.println(consulta.getDatosProfesor(d)[0]);
+        
         jTextField2.setText(campos[0]);
         jTextField3.setText(campos[1]);
         jTextField4.setText(campos[2]);
+        jTextPane1.setText(campos[3]);
         
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        
+        consulta = new Consultas();
+        String[] campos = new String[20];
+        String d = jTextField5.getText();
+        
+        consulta.getDatosJefatura(d);
+        
+        jTextField6.setText(campos[0]);
+        jTextField7.setText(campos[1]);
+        jTextField8.setText(campos[2]);
+        jTextField9.setText(campos[3]);
+        jTextField13.setText(campos[4]);
+        
+        
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
