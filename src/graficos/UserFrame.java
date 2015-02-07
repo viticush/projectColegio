@@ -744,7 +744,7 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField13.setText(campos[4]);
         
         int i =4;
-        while(!campos[i].equals(null)){
+        while(campos[i]!=null){
             
             jTextPane2.setText(campos[i]);
         
