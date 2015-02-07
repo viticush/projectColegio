@@ -735,7 +735,7 @@ public class UserFrame extends javax.swing.JFrame {
         String[] campos = new String[20];
         String d = jTextField5.getText();
         
-        consulta.getDatosJefatura(d);
+        campos = consulta.getDatosJefatura(d);
         
         jTextField6.setText(campos[0]);
         jTextField7.setText(campos[1]);
@@ -743,6 +743,12 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField9.setText(campos[3]);
         jTextField13.setText(campos[4]);
         
+        int i =4;
+        while(!campos[i].equals(null)){
+            
+            jTextPane2.setText(campos[i]);
+        
+        }
         
     }//GEN-LAST:event_jButton10ActionPerformed
 
