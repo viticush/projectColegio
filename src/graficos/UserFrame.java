@@ -691,7 +691,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        
-        String[] campos = null;
+        String[] campos;
         campos = consulta.getDatosProfesor(jTextField1.getText());
         jTextField2.setText(campos[0]);
         jTextField3.setText(campos[1]);
