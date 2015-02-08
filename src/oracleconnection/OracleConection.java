@@ -95,6 +95,21 @@ public class OracleConection {
         }
         return resultado;
     }
+   
+   public boolean ejecutar(String sql) throws SQLException {
+        try {
+            Statement sentencia;
+            sentencia = getConexion().createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+            sentencia.executeUpdate(sql);
+            //getConexion().commit();
+            sentencia.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.print("ERROR SQL");
+            return false;
+        }
+        return true;
+    }
 
 
 }

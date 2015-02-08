@@ -98,6 +98,19 @@ public class Consultas {
         }
         return resultado;
     }
+    
+    public boolean nuevoUsuario(String u, String pass){
+          boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("insert into usuarios (usuario, contraseña, rol) values ('"+u+"', '"+pass+"', 3)");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
      
       
     
