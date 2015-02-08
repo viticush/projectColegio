@@ -111,6 +111,32 @@ public class Consultas {
         }
         return resultado;
     }
+    
+    public boolean borrarUsuario(String u){
+          boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("delete from usuarios where usuario='"+u+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+     public boolean modificarUsuario(String u, String pass){
+          boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update usuarios set contraseña='"+pass+"' where usuario='"+u+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
      
       
     
