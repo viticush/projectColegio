@@ -60,6 +60,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         jLogin.setText("LOGIN");
         jLogin.addMouseListener(new java.awt.event.MouseAdapter() {

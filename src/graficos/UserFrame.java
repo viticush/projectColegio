@@ -133,6 +133,7 @@ public class UserFrame extends javax.swing.JFrame {
         jAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Administracion");
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\victor\\Documents\\NetBeansProjects\\projectColegio\\images\\add.png")); // NOI18N
 

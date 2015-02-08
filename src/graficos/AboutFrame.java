@@ -37,6 +37,8 @@ public class AboutFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
+        setTitle("About");
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("\t     ProgramaColegio v1.2\nPrograma realizado por:\n\nVíctor Gallego Aparicio\nJorge Martínez Frade\n\nIngeniería del SW 2014-2015");
