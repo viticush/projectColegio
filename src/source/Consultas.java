@@ -81,6 +81,7 @@ public class Consultas {
             resultado[2] = consulta.getString("faltas");
             resultado[3] = consulta.getString("partes_expulsion");
             resultado[4] = consulta.getString("curso");
+            resultado[5] = consulta.getString("asignaturas");
             consulta.close();
             
            /* consulta = conexionBaseDeDatos

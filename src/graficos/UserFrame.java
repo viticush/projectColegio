@@ -551,6 +551,11 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel15.setText("DNI:");
 
         jButton16.setText("Buscar");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Nombre:");
 
@@ -1098,7 +1103,7 @@ public class UserFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                .addComponent(jTabbedPane4)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1219,12 +1224,9 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField8.setText(campos[2]);
         jTextField9.setText(campos[3]);
         jTextField13.setText(campos[4]);
+        jTextPane2.setText(campos[5]);
         
-      /*
-        for(int i = 5; i < campos.length;i++){
-            jTextPane2.setText(jTextPane2.getText()+campos[i]+"\n");
-        }*/
-        
+     
     }//GEN-LAST:event_jButtonBuscarJefActionPerformed
 
     private void jButtonClearJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearJefActionPerformed
@@ -1349,6 +1351,22 @@ public class UserFrame extends javax.swing.JFrame {
     private void jTextFieldCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCursoActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        consulta = new Consultas();
+        String[] campos = new String[20];
+        String d = jTextField10.getText();
+        
+        campos = consulta.getDatosJefatura(d);
+        
+        jTextField11.setText(campos[0]);
+        jTextField12.setText(campos[1]);
+       
+        jTextField14.setText(campos[4]);
+        
+        jTextPane3.setText(campos[5]);
+        
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments
