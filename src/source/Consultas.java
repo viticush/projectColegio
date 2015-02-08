@@ -82,15 +82,16 @@ public class Consultas {
             resultado[3] = consulta.getString("partes_expulsion");
             resultado[4] = consulta.getString("curso");
             consulta.close();
-            consulta = conexionBaseDeDatos
-                     .consultar("desc notas");
+            
+           /* consulta = conexionBaseDeDatos
+                     .consultar("select * from notas where id='"+dni+"'");
             int i = 5;
             while(consulta.next()){
                 
-                resultado[i] = consulta.getString("column");
+                resultado[i] = consulta.getString(1);
                 i++;
                 
-            }
+            }*/
            
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);

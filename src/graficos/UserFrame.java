@@ -315,6 +315,11 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel14.setText("Partes de expulsión:");
 
         jButton20.setText("Clear");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         jTextField13.setEditable(false);
 
@@ -743,12 +748,23 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField9.setText(campos[3]);
         jTextField13.setText(campos[4]);
         
-      
+      /*
         for(int i = 5; i < campos.length;i++){
-            jTextPane2.setText(campos[i]);
-        }
+            jTextPane2.setText(jTextPane2.getText()+campos[i]+"\n");
+        }*/
         
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+      
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        jTextField13.setText("");
+        
+    }//GEN-LAST:event_jButton20ActionPerformed
 
     /**
      * @param args the command line arguments
