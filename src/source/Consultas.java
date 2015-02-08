@@ -138,6 +138,19 @@ public class Consultas {
         return resultado;
     }
      
+     public boolean agregarAlumno(String[] datos){
+          boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("insert into alumnos (dni, nombre, apellidos, domicilio, telefono, fecha_nacimiento, curso) values ('"+datos[0]+"', '"+datos[1]+"', '"+datos[2]+"', '"+datos[3]+"', '"+datos[4]+"', TO_DATE('"+datos[5]+"', 'MM/DD/YYYY'),'"+datos[6]+"')");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+     
       
     
 }

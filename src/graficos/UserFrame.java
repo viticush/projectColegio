@@ -1287,10 +1287,25 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNuevoAlumnoActionPerformed
 
     private void jButtonAcepNuevAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcepNuevAlumActionPerformed
-        // TODO add your handling code here:
+        
+        String[] datos = new String[20];
+        consulta = new Consultas();
+        
+        datos[0] = jTextFieldDNI.getText();
+        datos[1] = jTextFieldNombre.getText();
+        datos[2] = jTextFieldApellidos.getText();
+        datos[3] = jTextFieldDomicilio.getText();
+        datos[4] = jTextFieldTelefono.getText();
+        datos[5] = jTextFieldNacimiento.getText();
+        datos[6] = jTextFieldCurso.getText();
+        
+        consulta.agregarAlumno(datos);
+                
+                
         this.setContentPane(jPanel4);
         jPanel9.setVisible(false);
         jPanel10.setVisible(false);
+        this.pack();
     }//GEN-LAST:event_jButtonAcepNuevAlumActionPerformed
 
     private void jButtonClearNuevAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearNuevAlumActionPerformed
