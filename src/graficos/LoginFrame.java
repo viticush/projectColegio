@@ -251,14 +251,17 @@ public class LoginFrame extends javax.swing.JFrame {
         if(c.getRol(user.getNickname()).equals("1")){
             UserFrame u = new UserFrame(1, this);
             u.arrancarProfe(1, this);
+            
         }
         if(c.getRol(user.getNickname()).equals("2")){
             UserFrame u = new UserFrame(2, this);
             u.arrancarProfe(2, this);
+            
         }
         if(c.getRol(user.getNickname()).equals("3")){
             UserFrame u = new UserFrame(3, this);
             u.arrancarProfe(3, this);
+            
         }
         this.setVisible(false);
         jTextLogin.setText("");
@@ -300,6 +303,7 @@ public class LoginFrame extends javax.swing.JFrame {
             @Override
             public void run() {
                 new LoginFrame().setVisible(true);
+                
             }
         });
     }
