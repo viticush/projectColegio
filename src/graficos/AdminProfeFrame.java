@@ -57,7 +57,7 @@ public class AdminProfeFrame extends javax.swing.JFrame {
 
         jLabelDNI.setText("DNI:");
 
-        jLabel6.setText("Fecha de nacimiento (mm/dd/yyyy):");
+        jLabel6.setText("Fecha de nacimiento (yyyy-mm-dd):");
 
         jButtonAcepNuevAlum.setText("Modificar");
 

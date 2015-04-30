@@ -74,10 +74,6 @@ public class SQLConnection {
             Connection conn = conexionSQL.getConexion();
             // driver@machineName:port:SID           ,  userid,  password
             Statement stmt = conn.createStatement();
-            ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
-            while (rset.next()) {
-                System.out.println(rset.getString(1));   // Print col 1
-            }
             stmt.close();
             conexionSQL.cerrar();
         } catch (SQLException ex) {
