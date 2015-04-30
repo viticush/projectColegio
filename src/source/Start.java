@@ -9,7 +9,7 @@ package source;
 import graficos.AboutFrame;
 import graficos.LoginFrame;
 import graficos.UserFrame;
-import oracleconnection.OracleConection;
+import sqlconnection.SQLConnection;
 
 /**
  *
@@ -18,7 +18,7 @@ import oracleconnection.OracleConection;
 public class Start {
    
     public static void main(String [] args){
-       OracleConection.startdb();
+       SQLConnection.startdb();
        LoginFrame.arrancar();   
     }
 }

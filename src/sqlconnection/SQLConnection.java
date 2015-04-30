@@ -1,4 +1,4 @@
-package oracleconnection;
+package sqlconnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,20 +8,22 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OracleConection {
+public class SQLConnection {
 
     //Usuario de la base de datos
-    private static final String USUARIO = "software";
+    private static final String USUARIO = "root";
     //Contraseña del usuario de la base de datos
-    private static final String PASS = "software";
+    private static final String PASS = "ingSoft15";
     //SID de la base de datos, este lo registramos en la instalacion
-    private static final String SID = "xe";
-    //Host donde se encuentra la base de datos, para nuesto caso como es local
+   /* private static final String SID = "xe";
+    //Host donde se encuentra la base de datos, para nuesto caso como es local*/
     //se indica que esta en localhost
-    private static final String HOST = "localhost";
-    //El puerto 1521 es el estandar para este tipo de instalaciones a menos que
-    //se indicque lo contrario
-    private static final int PUERTO = 1521;
+    private static final String HOST = "127.0.0.2";
+    
+    //Esquema de la BD
+    private static final String SCHEMA = "colegio";
+    //Puerto por donde conecta la base da datos
+    private static final int PUERTO = 3306;
     //Objeto donde se almacenara nuestra conexion
     private static Connection conection;
 
@@ -36,11 +38,11 @@ public class OracleConection {
 
   
    
-    private OracleConection conectar() {
+    private SQLConnection conectar() {
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
+            Class.forName("com.mysql.jdbc.Driver");
 
-            String cadenaConexion = "jdbc:oracle:thin:@" + HOST + ":" + PUERTO + ":" + SID;
+            String cadenaConexion = "jdbc:mysql://" + HOST + ":"  + PUERTO + "/" + SCHEMA;
             //BD == nombre y usuario de la base de datos
             //123 == contraseña de acceso
             conection = DriverManager.getConnection(cadenaConexion, USUARIO, PASS);
@@ -66,10 +68,10 @@ public class OracleConection {
      */
     public static void startdb() {
 
-        OracleConection conexionOracle = new OracleConection();
+        SQLConnection conexionSQL = new SQLConnection();
         try {
-            conexionOracle.conectar();
-            Connection conn = conexionOracle.getConexion();
+            conexionSQL.conectar();
+            Connection conn = conexionSQL.getConexion();
             // driver@machineName:port:SID           ,  userid,  password
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
@@ -77,9 +79,9 @@ public class OracleConection {
                 System.out.println(rset.getString(1));   // Print col 1
             }
             stmt.close();
-            conexionOracle.cerrar();
+            conexionSQL.cerrar();
         } catch (SQLException ex) {
-            Logger.getLogger(OracleConection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SQLConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

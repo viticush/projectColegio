@@ -10,15 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import oracleconnection.OracleConection;
+import sqlconnection.SQLConnection;
 
 
 public class Consultas {
-    OracleConection conexionBaseDeDatos;
+    SQLConnection conexionBaseDeDatos;
     
     public Consultas(){
         
-        conexionBaseDeDatos = new OracleConection();
+        conexionBaseDeDatos = new SQLConnection();
         
     }
     
@@ -144,7 +144,7 @@ public class Consultas {
         try {
           
             resultado = conexionBaseDeDatos
-                    .ejecutar("insert into alumnos (dni, nombre, apellidos, domicilio, telefono, fecha_nacimiento, curso) values ('"+datos[0]+"', '"+datos[1]+"', '"+datos[2]+"', '"+datos[3]+"', '"+datos[4]+"', TO_DATE('"+datos[5]+"', 'MM/DD/YYYY'),'"+datos[6]+"')");
+                    .ejecutar("insert into alumnos (dni, nombre, apellidos, domicilio, telefono, fecha_nacimiento, curso, faltas, asignaturas, partes_expulsion) values ('"+datos[0]+"', '"+datos[1]+"', '"+datos[2]+"', '"+datos[3]+"', '"+datos[4]+"', TO_DATE('"+datos[5]+"', 'MM/DD/YYYY'),'"+datos[6]+"',0,'Matemáticas, Lengua, Conocimiento del medio, Inglés, Educación física, Música, Plástica, Lectura/estudio',0)");
             
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,6 +152,33 @@ public class Consultas {
         return resultado;
     }
      
+     public boolean modificarFaltas(int faltas, String nombre){
+          boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update alumnos set faltas ='"+faltas+"' where dni='"+nombre+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+    public String getFaltas(String nombre){
+        ResultSet consulta = null;
+        String resultado = null;
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select faltas from alumnos where dni='"+nombre+"'");
+            consulta.next();
+            resultado = consulta.getString(1);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
       
     
 }
