@@ -51,6 +51,27 @@ public class Query {
         }
         return resultado;
     }
+     
+     public String[] getDatosSecretaria(String dni){
+        ResultSet consulta = null;
+        String[] resultado = new String[20];
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select * from alumnos where dni='"+dni+"'");
+            consulta.next();
+            resultado[0] = consulta.getString("nombre");
+            resultado[1] = consulta.getString("apellidos");
+            resultado[2] = consulta.getString("domicilio");
+            resultado[3] = consulta.getString("telefono");
+            resultado[4] = consulta.getString("fecha_nacimiento");
+            resultado[5] = consulta.getString("curso");
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
      public String[] getDatosProfesor(String dni){
         ResultSet consulta = null;
         String[] resultado = new String[20];
@@ -139,7 +160,22 @@ public class Query {
         return resultado;
     }
      
-     public boolean agregarAlumno(String[] datos){
+    public boolean modificarAlumno(String[] datos){
+          boolean resultado = false;
+        try {
+            System.out.println("telefono --> "+ datos[4]);
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update alumnos set nombre='"+datos[1]+"', apellidos='"+datos[2]+"', domicilio='"+datos[3]+"', telefono='"+datos[4]+"', fecha_nacimiento='"+datos[5]+"', curso='"+datos[6]+"' where dni='"+datos[0]+"'");
+                    //.ejecutar("update alumnos set nombre='"+datos[1]+"', apellidos='"+datos[2]+"' where dni='"+datos[0]+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+    
+    public boolean agregarAlumno(String[] datos){
           boolean resultado = false;
         try {
           
@@ -150,7 +186,6 @@ public class Query {
         }
         return resultado;
     }
-     
      public boolean modificarFaltas(int faltas, String nombre){
           boolean resultado = false;
         try {

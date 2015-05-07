@@ -173,10 +173,10 @@ public class UserFrame extends javax.swing.JFrame {
         jTextFieldDomicilio1 = new javax.swing.JTextField();
         jTextFieldTelefono1 = new javax.swing.JTextField();
         jTextFieldNacimiento1 = new javax.swing.JTextField();
+        jTextFieldCurso1 = new javax.swing.JTextField();
         jButtonModifAlum = new javax.swing.JButton();
         jButtonBorrarModAlum = new javax.swing.JButton();
         jButtonSearchModAlum = new javax.swing.JButton();
-        jTextFieldCurso1 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         jButtonEditUser = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -855,6 +855,18 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldTelefono1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefono1ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCurso1ActionPerformed(evt);
+            }
+        });
+
         jButtonModifAlum.setText("Modificar");
         jButtonModifAlum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -870,6 +882,11 @@ public class UserFrame extends javax.swing.JFrame {
         });
 
         jButtonSearchModAlum.setText("Buscar");
+        jButtonSearchModAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchModAlumActionPerformed(evt);
+            }
+        });
 
         jLabel35.setText("Curso:");
 
@@ -1362,6 +1379,24 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButtonModifAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifAlumActionPerformed
         // TODO add your handling code here:
+        String[] datos = new String[20];
+        consulta = new Query();
+        
+        datos[0] = jTextFieldDNI1.getText();
+        datos[1] = jTextFieldNombre1.getText();
+        datos[2] = jTextFieldApellidos1.getText();
+        datos[4] = jTextFieldDomicilio1.getText();
+        datos[4] = jTextFieldTelefono1.getText();
+        datos[5] = jTextFieldCurso1.getText();
+        consulta.modificarAlumno(datos);
+        
+        jTextFieldDNI1.setText("");
+        jTextFieldNombre1.setText("");
+        jTextFieldApellidos1.setText("");
+        jTextFieldDomicilio1.setText("");
+        jTextFieldTelefono1.setText("");
+        jTextFieldCurso1.setText("");
+                
         this.setContentPane(jPanel4);
         jPanel10.setVisible(false);
         this.pack();
@@ -1448,6 +1483,30 @@ public class UserFrame extends javax.swing.JFrame {
     private void jTextFieldDNI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNI1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDNI1ActionPerformed
+
+    private void jButtonSearchModAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchModAlumActionPerformed
+        // TODO add your handling code here:
+        //hacemos una consulta en función al dni del alumno (debe estar en la BD)
+        consulta = new Query();
+        String[] campos = new String[20];
+        String d = jTextFieldDNI1.getText();
+        campos = consulta.getDatosSecretaria(d);
+        
+        jTextFieldNombre1.setText(campos[0]);
+        jTextFieldApellidos1.setText(campos[1]);
+        jTextFieldDomicilio1.setText(campos[2]);
+        jTextFieldTelefono1.setText(campos[3]);
+        jTextFieldNacimiento1.setText(campos[4]);
+        jTextFieldCurso1.setText(campos[5]);
+    }//GEN-LAST:event_jButtonSearchModAlumActionPerformed
+
+    private void jTextFieldCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCurso1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCurso1ActionPerformed
+
+    private void jTextFieldTelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefono1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefono1ActionPerformed
 
     /**
      * @param args the command line arguments
