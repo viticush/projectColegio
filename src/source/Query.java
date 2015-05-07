@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 import sqlconnection.SQLConnection;
 
 
-public class Consultas {
+public class Query {
     SQLConnection conexionBaseDeDatos;
     
-    public Consultas(){
+    public Query(){
         
         conexionBaseDeDatos = new SQLConnection();
         
@@ -32,7 +32,7 @@ public class Consultas {
             resultado = consulta.getString(1);
            
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -47,7 +47,7 @@ public class Consultas {
             resultado = consulta.getString(1);
            
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -64,7 +64,7 @@ public class Consultas {
             resultado[3] = consulta.getString("observaciones");
            
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -95,7 +95,7 @@ public class Consultas {
             }*/
            
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -108,7 +108,7 @@ public class Consultas {
                     .ejecutar("insert into usuarios (usuario, contraseña, rol) values ('"+u+"', '"+pass+"', 3)");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -121,7 +121,7 @@ public class Consultas {
                     .ejecutar("delete from usuarios where usuario='"+u+"'");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -134,7 +134,7 @@ public class Consultas {
                     .ejecutar("update usuarios set contraseña='"+pass+"' where usuario='"+u+"'");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -146,7 +146,7 @@ public class Consultas {
             resultado = conexionBaseDeDatos
                     .ejecutar("insert into alumnos (dni, nombre, apellidos, domicilio, telefono, fecha_nacimiento, curso, faltas, asignaturas, partes_expulsion) values ('"+datos[0]+"', '"+datos[1]+"', '"+datos[2]+"', '"+datos[3]+"', '"+datos[4]+"', '"+datos[5]+"', '"+datos[6]+"', 0, 'Matemáticas, Lengua, Conocimiento del medio, Inglés, Educación física, Música, Plástica, Lectura/estudio', 0)");
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -159,7 +159,7 @@ public class Consultas {
                     .ejecutar("update alumnos set faltas ='"+faltas+"' where dni='"+nombre+"'");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }
@@ -174,7 +174,7 @@ public class Consultas {
             resultado = consulta.getString(1);
            
         } catch (SQLException ex) {
-            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
     }

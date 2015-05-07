@@ -6,9 +6,9 @@
 
 package source;
 
-import graficos.AboutFrame;
-import graficos.LoginFrame;
-import graficos.UserFrame;
+import graphics.AboutFrame;
+import graphics.LoginFrame;
+import graphics.UserFrame;
 import sqlconnection.SQLConnection;
 
 /**

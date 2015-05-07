@@ -11,7 +11,7 @@ package source;
  *
  * @author victor
  */
-public class Usuario {
+public class User {
     
     private String nickname;
 

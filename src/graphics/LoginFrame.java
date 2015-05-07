@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package graficos;
+package graphics;
 
 import java.io.File;
 import java.net.URL;
@@ -18,8 +18,8 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JFrame;
 import sqlconnection.SQLConnection;
-import source.Consultas;
-import source.Usuario;
+import source.Query;
+import source.User;
 
 /**
  *
@@ -105,13 +105,12 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTittle, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLogin)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                            .addComponent(jReset))
-                        .addComponent(jPasswd)
-                        .addComponent(jTextLogin)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addComponent(jReset))
+                    .addComponent(jPasswd)
+                    .addComponent(jTextLogin))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -238,11 +237,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginActionPerformed
         
-    final Usuario user = new Usuario();
+    final User user = new User();
     user.setNickname(jTextLogin.getText());
     user.setPassword(jPasswd.getText());
             
-    Consultas c = new Consultas();
+    Query c = new Query();
     String contraseñaUsuario = c.getContraseña(user.getNickname());
             
     if(user.getPassword().equals(contraseñaUsuario)){

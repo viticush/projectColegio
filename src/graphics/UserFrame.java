@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package graficos;
+package graphics;
 
 import java.io.File;
 import java.net.URL;
@@ -12,7 +12,7 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JFrame;
 import source.Backup;
-import source.Consultas;
+import source.Query;
 
 /**
  *
@@ -21,7 +21,7 @@ import source.Consultas;
 public class UserFrame extends javax.swing.JFrame {
 
    JFrame login;
-   Consultas consulta;
+   Query consulta;
     /**
      * Creates new form ProfFrame
      */
@@ -1054,7 +1054,7 @@ public class UserFrame extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jButtonNuevoAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1226,7 +1226,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButtonBuscarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarProfeActionPerformed
        
-        consulta = new Consultas();
+        consulta = new Query();
         String[] campos = new String[20];
         String d = jTextField1.getText();
         campos = consulta.getDatosProfesor(d);
@@ -1242,7 +1242,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButtonBuscarJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarJefActionPerformed
         
-        consulta = new Consultas();
+        consulta = new Query();
         String[] campos = new String[20];
         String d = jTextField5.getText();
         
@@ -1272,7 +1272,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
 
-        consulta = new Consultas();
+        consulta = new Query();
 
         consulta.nuevoUsuario(jTextNuevoUsuario.getText(), jNuevaContraseña.getText());
 
@@ -1295,7 +1295,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditUserActionPerformed
 
     private void jButtonModificarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarUserActionPerformed
-        consulta = new Consultas();
+        consulta = new Query();
         consulta.modificarUsuario(jTextField15.getText(), jTextField16.getText());
        this.setContentPane(jPanel4);
        jPanel9.setVisible(false);
@@ -1303,7 +1303,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonModificarUserActionPerformed
 
     private void jButtonBorrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarUserActionPerformed
-       consulta = new Consultas();
+       consulta = new Query();
        
        consulta.borrarUsuario(jTextField15.getText());
        
@@ -1321,7 +1321,7 @@ public class UserFrame extends javax.swing.JFrame {
     private void jButtonAcepNuevAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAcepNuevAlumActionPerformed
         
         String[] datos = new String[20];
-        consulta = new Consultas();
+        consulta = new Query();
         
         datos[0] = jTextFieldDNI.getText();
         datos[1] = jTextFieldNombre.getText();
@@ -1383,7 +1383,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCursoActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        consulta = new Consultas();
+        consulta = new Query();
         String[] campos = new String[20];
         String d = jTextField10.getText();
         
@@ -1399,7 +1399,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButtonAddFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFaltaActionPerformed
-        consulta = new Consultas();
+        consulta = new Query();
         String faltas;
        faltas = consulta.getFaltas(jTextField1.getText());
        
@@ -1421,7 +1421,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddFaltaActionPerformed
 
     private void jButtonDeleteFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteFaltaActionPerformed
-       consulta = new Consultas();
+       consulta = new Query();
         String faltas;
        faltas = consulta.getFaltas(jTextField1.getText());
        
