@@ -41,7 +41,7 @@ public class AboutFrame extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("\t     ProgramaColegio v1.2\nPrograma realizado por:\n\nVíctor Gallego Aparicio\nJorge Martínez Frade\n\nIngeniería del SW 2014-2015");
+        jTextArea1.setText("\t     ProgramaColegio v2.0!!!\nPrograma realizado por:\n\nVíctor Gallego Aparicio\nYago Cordero\n\nIngeniería del SWII 2014-2015");
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 

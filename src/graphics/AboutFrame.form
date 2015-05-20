@@ -67,7 +67,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#x9;     ProgramaColegio v1.2&#xa;Programa realizado por:&#xa;&#xa;V&#xed;ctor Gallego Aparicio&#xa;Jorge Mart&#xed;nez Frade&#xa;&#xa;Ingenier&#xed;a del SW 2014-2015"/>
+                <Property name="text" type="java.lang.String" value="&#x9;     ProgramaColegio v2.0!!!&#xa;Programa realizado por:&#xa;&#xa;V&#xed;ctor Gallego Aparicio&#xa;Yago Cordero&#xa;&#xa;Ingenier&#xed;a del SWII 2014-2015"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>

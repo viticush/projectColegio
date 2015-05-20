@@ -13,16 +13,20 @@ public class SQLConnection {
     //Usuario de la base de datos
     private static final String USUARIO = "root";
     //Contraseña del usuario de la base de datos
-    private static final String PASS = "ingSoft15";
-    //SID de la base de datos, este lo registramos en la instalacion
-   /* private static final String SID = "xe";
+    
+    //private static final String PASS = "ingSoft15";
+    private static final String PASS = "sekret";
+      
     //Host donde se encuentra la base de datos, para nuesto caso como es local*/
     //se indica que esta en localhost
-    private static final String HOST = "127.0.0.2";
-    
+    //private static final String HOST = "127.0.0.2";
+    //private static final String HOST = "viti-raspbian.ddns.net";
+    private static final String HOST = "192.168.1.180";
+   
     //Esquema de la BD
     private static final String SCHEMA = "colegio";
     //Puerto por donde conecta la base da datos
+    
     private static final int PUERTO = 3306;
     //Objeto donde se almacenara nuestra conexion
     private static Connection conection;
