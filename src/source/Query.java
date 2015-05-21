@@ -174,6 +174,19 @@ public class Query {
         return resultado;
     }
     
+    public boolean modificarObservaciones(String dni, String observaciones){
+        boolean resultado = false;
+        try {
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update alumnos set observaciones = '"+observaciones+"' where dni= '"+dni+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+        
+        
+    }
     
     public boolean agregarAlumno(String[] datos){
           boolean resultado = false;

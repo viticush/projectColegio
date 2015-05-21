@@ -80,6 +80,7 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jButtonClearProfe = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButtonAddFalta = new javax.swing.JButton();
         jButtonDeleteFalta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -232,6 +233,13 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Actualizar observaciones");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -259,7 +267,10 @@ public class UserFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonBuscarProfe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonClearProfe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel7)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -290,8 +301,10 @@ public class UserFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButtonClearProfe, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel7)
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -328,14 +341,13 @@ public class UserFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonReservaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonAddFalta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDeleteFalta, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonAddFalta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonDeleteFalta, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(139, 139, 139))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -847,7 +859,7 @@ public class UserFrame extends javax.swing.JFrame {
 
         jLabelDNI1.setText("DNI:");
 
-        jLabel34.setText("Fecha de nacimiento (mm/dd/yyyy):");
+        jLabel34.setText("Fecha de nacimiento (yyyy-mm-dd):");
 
         jTextFieldDNI1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1385,15 +1397,17 @@ public class UserFrame extends javax.swing.JFrame {
         datos[0] = jTextFieldDNI1.getText();
         datos[1] = jTextFieldNombre1.getText();
         datos[2] = jTextFieldApellidos1.getText();
-        datos[4] = jTextFieldDomicilio1.getText();
+        datos[3] = jTextFieldDomicilio1.getText();
         datos[4] = jTextFieldTelefono1.getText();
-        datos[5] = jTextFieldCurso1.getText();
+        datos[5] = jTextFieldNacimiento1.getText();
+        datos[6] = jTextFieldCurso1.getText();
         consulta.modificarAlumno(datos);
         
         jTextFieldDNI1.setText("");
         jTextFieldNombre1.setText("");
         jTextFieldApellidos1.setText("");
         jTextFieldDomicilio1.setText("");
+        jTextFieldNacimiento1.setText("");
         jTextFieldTelefono1.setText("");
         jTextFieldCurso1.setText("");
                 
@@ -1508,6 +1522,14 @@ public class UserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefono1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String dni = jTextField1.getText();
+        String observaciones = jTextPane1.getText();
+        consulta = new Query();
+        consulta.modificarObservaciones(dni, observaciones);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1547,6 +1569,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jAbout;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton21;
