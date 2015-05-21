@@ -226,6 +226,11 @@ public class Query {
         }
         return resultado;
     }
-      
+    
+    public boolean listarAlumnos (String[] datos){
+        boolean resultado = false;
+        return resultado;
+        
+    }
     
 }
