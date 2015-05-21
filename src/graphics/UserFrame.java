@@ -1366,6 +1366,13 @@ public class UserFrame extends javax.swing.JFrame {
           
                 
         this.setContentPane(jPanel4);
+        jTextFieldDNI.setText("");
+        jTextFieldNombre.setText("");
+        jTextFieldApellidos.setText("");
+        jTextFieldDomicilio.setText("");
+        jTextFieldTelefono.setText("");
+        jTextFieldNacimiento.setText("");
+        jTextFieldCurso.setText("");
         jPanel9.setVisible(false);
         jPanel10.setVisible(false);
         this.pack();
