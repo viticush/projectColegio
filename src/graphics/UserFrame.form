@@ -390,8 +390,8 @@
                               <EmptySpace pref="17" max="32767" attributes="0"/>
                               <Component id="jButtonFechaExJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="jButtonConsultaGuardiaJef" min="-2" pref="115" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="jButtonConsultaGuardiaJef" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="jButtonListaAlumnosJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
