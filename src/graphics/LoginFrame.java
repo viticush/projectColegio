@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import sqlconnection.SQLConnection;
 import source.Query;
 import source.User;
@@ -26,6 +28,7 @@ import source.User;
  * @author victor
  */
 public class LoginFrame extends javax.swing.JFrame {
+    private JDialog ventana;
 
     /**
      * Creates new form LoginFrame
@@ -98,39 +101,42 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jUser)
                     .addComponent(jPass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTittle, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addComponent(jLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addGap(53, 53, 53)
                         .addComponent(jReset))
-                    .addComponent(jPasswd)
-                    .addComponent(jTextLogin))
-                .addContainerGap(82, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTittle, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jTittle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jUser))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPass)
                     .addComponent(jPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLogin)
                     .addComponent(jReset))
-                .addGap(100, 100, 100))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jFile.setText("File");
@@ -249,23 +255,29 @@ public class LoginFrame extends javax.swing.JFrame {
             UserFrame u = new UserFrame(1, this);
             u.arrancarProfe(1, this);
             
-        }
-        if(c.getRol(user.getNickname()).equals("2")){
+            
+        } else if(c.getRol(user.getNickname()).equals("2")){
             UserFrame u = new UserFrame(2, this);
             u.arrancarProfe(2, this);
             
-        }
-        if(c.getRol(user.getNickname()).equals("3")){
+        } else if(c.getRol(user.getNickname()).equals("3")){
             UserFrame u = new UserFrame(3, this);
             u.arrancarProfe(3, this);
             
+        } else {
+            System.out.println("Error de rol");
         }
         this.setVisible(false);
         jTextLogin.setText("");
         jPasswd.setText("");
+    } else {
+        JOptionPane.showMessageDialog(ventana = new JDialog(),
+    "Eggs are not supposed to be green.",
+    "Inane error",
+    JOptionPane.ERROR_MESSAGE);
+        
     }
-       
-    //this.setVisible(false);
+
     }//GEN-LAST:event_jLoginActionPerformed
 
     /**
