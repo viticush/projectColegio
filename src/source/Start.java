@@ -7,8 +7,8 @@
 package source;
 
 import graphics.AboutFrame;
-import graphics.LoginFrame;
-import graphics.UserFrame;
+import graphics.LoginVentana;
+import graphics.MainUsuario;
 import sqlconnection.SQLConnection;
 
 /**
@@ -19,6 +19,6 @@ public class Start {
    
     public static void main(String [] args){
        SQLConnection.startdb();
-       LoginFrame.arrancar();   
+       LoginVentana.arrancar();   
     }
 }

@@ -12,9 +12,7 @@ package graphics;
  */
 public class AboutFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminFrame
-     */
+    
     public AboutFrame() {
         initComponents();
         this.setSize(400, 200);

@@ -27,13 +27,13 @@ import source.User;
  *
  * @author victor
  */
-public class LoginFrame extends javax.swing.JFrame {
+public class LoginVentana extends javax.swing.JFrame {
     private JDialog ventana;
 
     /**
      * Creates new form LoginFrame
      */
-    public LoginFrame() {
+    public LoginVentana() {
         initComponents();
         this.setLocation(500, 120);
     }
@@ -252,16 +252,16 @@ public class LoginFrame extends javax.swing.JFrame {
             
     if(user.getPassword().equals(contraseñaUsuario)){
         if(c.getRol(user.getNickname()).equals("1")){
-            UserFrame u = new UserFrame(1, this);
+            MainUsuario u = new MainUsuario(1, this);
             u.arrancarProfe(1, this);
             
             
         } else if(c.getRol(user.getNickname()).equals("2")){
-            UserFrame u = new UserFrame(2, this);
+            MainUsuario u = new MainUsuario(2, this);
             u.arrancarProfe(2, this);
             
         } else if(c.getRol(user.getNickname()).equals("3")){
-            UserFrame u = new UserFrame(3, this);
+            MainUsuario u = new MainUsuario(3, this);
             u.arrancarProfe(3, this);
             
         } else {
@@ -272,8 +272,8 @@ public class LoginFrame extends javax.swing.JFrame {
         jPasswd.setText("");
     } else {
         JOptionPane.showMessageDialog(ventana = new JDialog(),
-    "Eggs are not supposed to be green.",
-    "Inane error",
+    "La contraseña introducida no es correcta.",
+    "Login/contraseña",
     JOptionPane.ERROR_MESSAGE);
         
     }
@@ -297,13 +297,13 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -311,7 +311,7 @@ public class LoginFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoginFrame().setVisible(true);
+                new LoginVentana().setVisible(true);
                 
             }
         });
