@@ -952,8 +952,8 @@ public class MainUsuario extends javax.swing.JFrame {
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
         // TODO add your handling code here:
-        Backup copia = new Backup();
-        copia.exportarDatos();
+        //Backup copia = new Backup();
+        //copia.exportarDatos();
         
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
