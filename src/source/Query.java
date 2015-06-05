@@ -6,10 +6,12 @@
 
 package source;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sqlconnection.SQLConnection;
 
 
@@ -233,4 +235,22 @@ public class Query {
         
     }
     
+    /*public boolean hacerBackup(){
+        //TODO: ojo con este metodo
+        Date fecha;
+        int yyyy = 0;
+        int mm = 0;
+        int dd = 0;
+        fecha = new Date(yyyy,mm,dd);
+        boolean result = false;
+        String ruta ="http://192.168.1.180:/backup";
+        try {
+            result = conexionBaseDeDatos.ejecutar ("mysqldump --opt --password=sekret --user=root colegio > archivo.sql");
+        } catch (SQLException ex) {
+            Logger.getLogger(Backup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    */
 }

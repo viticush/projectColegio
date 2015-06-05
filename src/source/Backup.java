@@ -6,10 +6,16 @@
 
 package source;
 
+import java.awt.Component;
+import java.io.BufferedReader;
 import java.io.IOException;
-import static java.lang.Compiler.command;
+import java.io.InputStreamReader;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import sqlconnection.SQLConnection;
 /**
  *
  * @author victor
@@ -18,17 +24,23 @@ public class Backup {
     
     //private Runtime llamada= Runtime.getRuntime().exec(command);
    // private String comando = "cmd /c start";
+    private Component ventana;
       
-    public void exportarDatos(){
-        //comando+="notepad.exe";
-       // comando += "expdp system/software dumpfile=copia_bd.dmp logfile=copia_bd.log directory=CARPETA_EXPORT SCHEMAS=colegio";
+    public void hacerBackup(){
+        //TODO:Ojo con el metodo de los cojones
+        String line;
+        String p ="sekret";
         try {
-            String command = "expdp system/software dumpfile=copia_bd.dmp logfile=copia_bd.log directory=CARPETA_EXPORT SCHEMAS=colegio";
-            Process child = Runtime.getRuntime().exec(command);
-            //llamada.exec(comando);
-            JOptionPane.showMessageDialog(null, "La copia de seguridad se ha generado correctamente");
-        } catch (IOException e) {
-            System.out.println(e);
+            String[] command = new String[] {"cmd.exe", "/c", "\"C:/Program Files/MySQL/MySQL Server 5.6/bin/mysqldump.exe\" -h viti-raspbian.ddns.net -u root --password=sekret colegio > D:/colegio.sql"};
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while ((line = input.readLine()) != null) {
+                
+                System.out.println(line); //there you can write file
+            }
+            input.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Backup.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

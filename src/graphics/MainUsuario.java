@@ -8,7 +8,10 @@ package graphics;
 
 import java.awt.Component;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JFrame;
@@ -951,9 +954,13 @@ public class MainUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNuevoUserActionPerformed
 
     private void jButtonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportarActionPerformed
-        // TODO add your handling code here:
-        //Backup copia = new Backup();
-        //copia.exportarDatos();
+        // TODO Cuidado con este evento
+        //consulta = new Query();
+        //consulta.hacerBackup();
+        Backup copia = new Backup();
+        copia.hacerBackup();
+        JOptionPane.showMessageDialog(ventana,
+    "Backup realizado correctamente.");
         
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
