@@ -8,18 +8,11 @@ package graphics;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import sqlconnection.SQLConnection;
 import source.Query;
 import source.User;
 
@@ -29,7 +22,7 @@ import source.User;
  */
 public class LoginVentana extends javax.swing.JFrame {
     private JDialog ventana;
-
+    
     /**
      * Creates new form LoginFrame
      */

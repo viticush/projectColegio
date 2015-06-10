@@ -8,10 +8,7 @@ package graphics;
 
 import java.awt.Component;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JFrame;

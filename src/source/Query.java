@@ -6,12 +6,10 @@
 
 package source;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import sqlconnection.SQLConnection;
 
 
@@ -23,6 +21,7 @@ public class Query {
         conexionBaseDeDatos = new SQLConnection();
         
     }
+    
     
     public String getContraseña(String nombre){
         ResultSet consulta = null;
