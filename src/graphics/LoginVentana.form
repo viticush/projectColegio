@@ -99,10 +99,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPasswd" min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="jTextLogin" min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="jTittle" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPasswd" pref="203" max="32767" attributes="0"/>
+                              <Component id="jTextLogin" pref="203" max="32767" attributes="0"/>
+                              <Component id="jTittle" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -114,7 +114,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTittle" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTittle" min="-2" pref="14" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextLogin" alignment="3" min="-2" max="-2" attributes="0"/>
