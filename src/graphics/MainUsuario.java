@@ -322,7 +322,7 @@ public class MainUsuario extends javax.swing.JFrame {
                         .addComponent(jButtonHGuardiasProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPonerNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(429, Short.MAX_VALUE))
+                        .addContainerGap(464, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -362,7 +362,7 @@ public class MainUsuario extends javax.swing.JFrame {
 
         jButtonConsultaNotasJef.setText("Consultar notas");
 
-        jButtonGestionPartes.setText("Gestionar partes");
+        jButtonGestionPartes.setText("Generar parte de expulsion");
         jButtonGestionPartes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGestionPartesActionPerformed(evt);
@@ -517,7 +517,7 @@ public class MainUsuario extends javax.swing.JFrame {
                         .addComponent(jButtonConsultaNotasJef, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonGestionPartes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonFechaExJef)
                         .addGap(45, 45, 45)
                         .addComponent(jButtonConsultaGuardiaJef)
@@ -975,6 +975,8 @@ public class MainUsuario extends javax.swing.JFrame {
 
     private void jButtonGestionPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionPartesActionPerformed
         // TODO add your handling code here:
+        PartesExp expulsion = new PartesExp();
+        expulsion.setVisible(true);
     }//GEN-LAST:event_jButtonGestionPartesActionPerformed
 
     private void jButtonBuscarJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarJefActionPerformed

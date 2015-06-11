@@ -108,7 +108,7 @@
                               <Component id="jButtonHGuardiasProfe" min="-2" pref="196" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonPonerNotas" min="-2" pref="169" max="-2" attributes="0"/>
-                              <EmptySpace pref="429" max="32767" attributes="0"/>
+                              <EmptySpace pref="464" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
@@ -413,7 +413,7 @@
                               <Component id="jButtonConsultaNotasJef" min="-2" pref="142" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButtonGestionPartes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonFechaExJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               <Component id="jButtonConsultaGuardiaJef" min="-2" max="-2" attributes="0"/>
@@ -451,7 +451,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonGestionPartes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestionar partes"/>
+                <Property name="text" type="java.lang.String" value="Generar parte de expulsion"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGestionPartesActionPerformed"/>

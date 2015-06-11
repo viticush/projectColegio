@@ -224,6 +224,31 @@ public class Query {
         return resultado;
     }
     
+     public void modificarPartes(String dni){
+         ResultSet consulta = null;
+        String resultado = null;
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select Partes_expulsion from alumnos where dni='"+dni+"'");
+            consulta.next();
+            resultado = consulta.getString(1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int count;
+        count = Integer.parseInt(resultado);
+        count++;
+        try {
+            conexionBaseDeDatos
+                    .ejecutar("update alumnos set Partes_expulsion ='"+count+"' where dni='"+dni+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+     }
+     
     public String getFaltas(String nombre){
         ResultSet consulta = null;
         String resultado = null;
