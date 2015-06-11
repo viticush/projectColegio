@@ -20,8 +20,8 @@ public class SQLConnection {
     //Host donde se encuentra la base de datos, para nuesto caso como es local*/
     //se indica que esta en localhost
     //private static final String HOST = "127.0.0.2";
-    private static final String HOST = "viti-raspbian.ddns.net";
-    //private static final String HOST = "192.168.1.180";
+    //private static final String HOST = "viti-raspbian.ddns.net";
+    private static final String HOST = "192.168.1.180";
    
     //Esquema de la BD
     private static final String SCHEMA = "colegio";

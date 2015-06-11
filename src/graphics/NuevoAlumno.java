@@ -207,7 +207,7 @@ public class NuevoAlumno extends javax.swing.JFrame {
         datos[6] = jTextFieldCurso.getText();
 
         consulta.agregarAlumno(datos);
-
+        consulta.crearTablaNotas(datos[0]);
         
         jTextFieldDNI.setText("");
         jTextFieldNombre.setText("");

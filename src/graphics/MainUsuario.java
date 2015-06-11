@@ -6,15 +6,20 @@
 
 package graphics;
 
+import com.itextpdf.text.DocumentException;
 import java.awt.Component;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import source.Backup;
+import source.ExportPDF;
 import source.Query;
 
 /**
@@ -371,7 +376,12 @@ public class MainUsuario extends javax.swing.JFrame {
 
         jButtonFechaExJef.setText("Fechas exámen");
 
-        jButtonConsultaGuardiaJef.setText("Consultar guardias");
+        jButtonConsultaGuardiaJef.setText("Generar boletin");
+        jButtonConsultaGuardiaJef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultaGuardiaJefActionPerformed(evt);
+            }
+        });
 
         jButtonListaAlumnosJef.setText("Listado alumnos");
         jButtonListaAlumnosJef.addActionListener(new java.awt.event.ActionListener() {
@@ -717,7 +727,7 @@ public class MainUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonBorrarUser)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1088,6 +1098,9 @@ public class MainUsuario extends javax.swing.JFrame {
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         
         String d = jTextField10.getText();
+        int pruebaDNI = Integer.parseInt(d);
+        pruebaDNI = (pruebaDNI)%23;
+        
         if (d.length()> 9 || d.length()==0){
             JOptionPane.showMessageDialog(ventana,
     "El DNI no es correcto.",
@@ -1226,7 +1239,9 @@ public class MainUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarProfeActionPerformed
 
     private void jButtonPonerNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPonerNotasActionPerformed
-        // TODO add your handling code here:
+
+        VentanaNotas notas = new VentanaNotas();
+        notas.arrancarNotas();
     }//GEN-LAST:event_jButtonPonerNotasActionPerformed
 
     private void jButtonHGuardiasProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHGuardiasProfeActionPerformed
@@ -1240,6 +1255,18 @@ public class MainUsuario extends javax.swing.JFrame {
         this.setContentPane(jPanel4);
         this.pack();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonConsultaGuardiaJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaGuardiaJefActionPerformed
+        // TODO add your handling code here:
+        ExportPDF p = new ExportPDF();
+       try {
+           p.crearPDF();
+       } catch (FileNotFoundException ex) {
+           Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (DocumentException ex) {
+           Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }//GEN-LAST:event_jButtonConsultaGuardiaJefActionPerformed
 
     /**
      * @param args the command line arguments

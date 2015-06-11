@@ -43,7 +43,8 @@ public class Backup {
             Logger.getLogger(Backup.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    //DEPRECATED!!!
     public void importarDatos(){
         try {
             String command = "impdp hr directory=CARPETA_EXPORT dumpfile=copia_bd.dmp logfile=copia_bd.log  SCHEMAS=colegio";

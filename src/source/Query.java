@@ -105,17 +105,7 @@ public class Query {
             resultado[4] = consulta.getString("curso");
             resultado[5] = consulta.getString("asignaturas");
             consulta.close();
-            
-           /* consulta = conexionBaseDeDatos
-                     .consultar("select * from notas where id='"+dni+"'");
-            int i = 5;
-            while(consulta.next()){
-                
-                resultado[i] = consulta.getString(1);
-                i++;
-                
-            }*/
-           
+                     
         } catch (SQLException ex) {
             Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -200,6 +190,8 @@ public class Query {
         }
         contador++;
     }
+    
+    
     public boolean agregarAlumno(String[] datos){
           boolean resultado = false;
         try {
@@ -222,11 +214,12 @@ public class Query {
             Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
-    }
-    
+    }   
+     
      public void modificarPartes(String dni){
+        
          ResultSet consulta = null;
-        String resultado = null;
+         String resultado = null;
         try {
            consulta = conexionBaseDeDatos
                     .consultar("select Partes_expulsion from alumnos where dni='"+dni+"'");
@@ -264,28 +257,175 @@ public class Query {
         return resultado;
     }
     
+    public String[] getNotasAlumno(String dni){
+        ResultSet consulta = null;
+        String[] resultado = new String[20];
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select * from notas where id='"+dni+"'");
+            consulta.next();
+            resultado[0] = consulta.getString("matematicas");
+            resultado[1] = consulta.getString("lengua");
+            resultado[2] = consulta.getString("conocimiento_del_medio");
+            resultado[3] = consulta.getString("ingles");
+            resultado[4] = consulta.getString("educacion_fisica");
+            resultado[5] = consulta.getString("musica");
+            resultado[6] = consulta.getString("plastica");
+            resultado[7] = consulta.getString("lectura/estudio");
+            resultado[8] = consulta.getString("curso");
+                      
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+    
+    public boolean crearTablaNotas(String dni){
+        ResultSet curso = null;
+        boolean resultado = false;
+        try {
+            curso  = conexionBaseDeDatos.consultar("select curso from alumnos where dni='"+dni+"'");
+           
+            //TODO falla la consulta
+            resultado = conexionBaseDeDatos
+                    .ejecutar("insert into notas (id, matematicas, lengua, conocimiento_del_medio, ingles, educacion_fisica, musica, plastica, lectura/estudio, curso) values ('"+dni+"', -1, -1, -1, -1, -1, -1, -1, -1,"+curso+")");
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+        
+    }
+    
+    
+    
+    
+    //PENDIENTE DE HACER
     public boolean listarAlumnos (String[] datos){
         boolean resultado = false;
         return resultado;
         
     }
     
-    /*public boolean hacerBackup(){
-        //TODO: ojo con este metodo
-        Date fecha;
-        int yyyy = 0;
-        int mm = 0;
-        int dd = 0;
-        fecha = new Date(yyyy,mm,dd);
-        boolean result = false;
-        String ruta ="http://192.168.1.180:/backup";
-        try {
-            result = conexionBaseDeDatos.ejecutar ("mysqldump --opt --password=sekret --user=root colegio > archivo.sql");
-        } catch (SQLException ex) {
-            Logger.getLogger(Backup.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+    
+    
+    
+    //PENDIENTE DE PROBAR
+    
+    public String generarBoletinNotas(int curso){
+        ResultSet consulta = null;
+        String result = null;
         
+        try {
+            consulta = conexionBaseDeDatos.consultar("select * from notas where curso='"+curso+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
+        
     }
-    */
+    
+    
+    
+    
+    
+    /*
+    
+    public String[][] generarBoletinNotas(){
+        ResultSet consulta1 = null;
+        String[][] resultado = null;
+        String[] notas = null;
+        
+        try {
+            int count = 0;
+            consulta1 = conexionBaseDeDatos
+                    .consultar("select id from notas");
+            while(consulta1.next()){
+                resultado[count][0] = this.getNombreAlumno(consulta1.getString(1));
+                notas = this.getNotasAlumno(consulta1.getString(1));
+                for(int i = 0;i<8;i++)
+                    resultado[count][i+1] = notas[i];
+                    count++;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+    
+    
+    public String getNombreAlumno(String id) {
+        ResultSet consulta = null;
+        String resultado = null;
+        try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select nombre from alumnos where dni='"+id+"'");
+            consulta.next();
+            resultado = consulta.getString("nombre");
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;    
+    }
+    
+    
+    public String[] getNotasAlumno(String id) {
+        ResultSet consulta = null;
+        String[] resultado = null;
+        
+         try {
+           consulta = conexionBaseDeDatos
+                    .consultar("select * from notas where Id='"+id+"'");
+            consulta.next();
+            resultado[0] = consulta.getString(2);
+            resultado[1] = consulta.getString(3);
+            resultado[2] = consulta.getString(4);
+            resultado[3] = consulta.getString(5);
+            resultado[4] = consulta.getString(6);
+            resultado[5] = consulta.getString(7);
+            resultado[6] = consulta.getString(8);
+            resultado[7] = consulta.getString(9);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    
+    
+    
+    public boolean agregarNotasNuevas(String[] datos) {
+            boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("insert into notas (Matematicas,Lengua,Conocimiento_del_medio,Ingles,Educacion_fisica,Musica,Plastica,Lectura/estudio) "
+                            + "values ('"+datos[1]+"', '"+datos[2]+"', '"+datos[3]+"', '"+datos[4]+"', '"+datos[5]+"', '"+datos[6]+"','"+datos[7]+"','"+datos[8]+"') where Id='"+datos[0]+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;    
+    }
+
+    public boolean modificarNotas(String[] datos) {
+        boolean resultado = false;
+        try {
+          
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update notas set Matematicas ='"+datos[1]+"', Lengua ='"+ datos[2]+
+                            "', Conocimiento_del_medio='"+datos[3]+"', Ingles = '"+
+                            datos[4]+"', Educacion_fisica = '"+datos[5]+"'"
+                            + ", Musica = '"+ datos[6]+"', Plastica ='"+ datos[7]
+                            +"', Lectura/estudio = '"+datos[8]+"' where Id='"+datos[0]+"'");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;   
+    }*/
 }
