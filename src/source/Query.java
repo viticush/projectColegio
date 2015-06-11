@@ -15,7 +15,7 @@ import sqlconnection.SQLConnection;
 
 public class Query {
     SQLConnection conexionBaseDeDatos;
-    
+    int contador = 1;
     public Query(){
         
         conexionBaseDeDatos = new SQLConnection();
@@ -188,7 +188,18 @@ public class Query {
         
         
     }
-    
+    public void imprimirAlumnos(){
+        
+        String ruta = "/home/pi/listados/resultado_"+contador+".txt";
+        try {
+            conexionBaseDeDatos
+                    .consultar("SELECT * INTO OUTFILE '"+ruta+"' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY ''LINES TERMINATED BY '\n' FROM alumnos;");
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        contador++;
+    }
     public boolean agregarAlumno(String[] datos){
           boolean resultado = false;
         try {

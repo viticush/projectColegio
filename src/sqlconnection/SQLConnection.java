@@ -25,6 +25,8 @@ public class SQLConnection {
    
     //Esquema de la BD
     private static final String SCHEMA = "colegio";
+    //private static final String SCHEMA = "appcolegio";
+
     //Puerto por donde conecta la base da datos
     
     private static final int PUERTO = 3306;

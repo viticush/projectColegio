@@ -11,6 +11,7 @@ import java.io.File;
 import java.net.URL;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import source.Backup;
@@ -23,14 +24,15 @@ import source.Query;
 public class MainUsuario extends javax.swing.JFrame {
 
    JFrame login;
-   Query consulta;
+   Query consulta = new Query();
     private Component ventana;
     /**
      * Creates new form ProfFrame
      */
-    public MainUsuario(int tipo, JFrame login) {
+    public MainUsuario(int tipo, LoginVentana login) {
         initComponents();
         
+        jLabel25.setText(login.getNombre());
         this.login = login;
         this.setLocation(500, 150);
         this.setSize(890,480);
@@ -69,7 +71,6 @@ public class MainUsuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButtonHGuardiasProfe = new javax.swing.JButton();
         jButtonPonerNotas = new javax.swing.JButton();
-        jButtonReservaAula = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -89,6 +90,8 @@ public class MainUsuario extends javax.swing.JFrame {
         jButtonAddFalta = new javax.swing.JButton();
         jButtonDeleteFalta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButtonConsultaNotasJef = new javax.swing.JButton();
         jButtonGestionPartes = new javax.swing.JButton();
@@ -118,7 +121,6 @@ public class MainUsuario extends javax.swing.JFrame {
         jButtonNuevoAlumno = new javax.swing.JButton();
         jButtonNuevoUser = new javax.swing.JButton();
         jButtonExportar = new javax.swing.JButton();
-        jButtonImportar = new javax.swing.JButton();
         jButtonModificarAlumno = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -161,7 +163,12 @@ public class MainUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
-        jButtonHGuardiasProfe.setText("Horario de guardias");
+        jButtonHGuardiasProfe.setText("Imprimir alumnos");
+        jButtonHGuardiasProfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHGuardiasProfeActionPerformed(evt);
+            }
+        });
 
         jButtonPonerNotas.setText("Poner notas");
         jButtonPonerNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -169,8 +176,6 @@ public class MainUsuario extends javax.swing.JFrame {
                 jButtonPonerNotasActionPerformed(evt);
             }
         });
-
-        jButtonReservaAula.setText("Reservar aula");
 
         jLabel4.setText("DNI:");
 
@@ -249,7 +254,8 @@ public class MainUsuario extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +287,7 @@ public class MainUsuario extends javax.swing.JFrame {
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 7, Short.MAX_VALUE)))
                 .addGap(44, 44, 44))
         );
 
@@ -301,42 +307,53 @@ public class MainUsuario extends javax.swing.JFrame {
 
         jLabel3.setText("Modificar faltas");
 
+        jLabel24.setText("Profesor:");
+
+        jLabel25.setText("jLabel25");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonHGuardiasProfe, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPonerNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(429, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(147, 147, 147))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonAddFalta, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonReservaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonAddFalta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonDeleteFalta, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(51, 51, 51)))))
-                .addContainerGap())
+                        .addComponent(jButtonDeleteFalta, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel24)
+                        .addComponent(jLabel25))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonHGuardiasProfe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAddFalta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDeleteFalta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonPonerNotas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonReservaAula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonPonerNotas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -539,17 +556,10 @@ public class MainUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButtonExportar.setText("Exportar backup");
+        jButtonExportar.setText("Generar backup");
         jButtonExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExportarActionPerformed(evt);
-            }
-        });
-
-        jButtonImportar.setText("Importar backup");
-        jButtonImportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonImportarActionPerformed(evt);
             }
         });
 
@@ -821,16 +831,14 @@ public class MainUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButtonNuevoAlumno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonModificarAlumno)
+                        .addComponent(jButtonNuevoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonModificarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonNuevoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonExportar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonImportar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonNuevoUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditUser)))
                 .addContainerGap())
         );
@@ -838,15 +846,14 @@ public class MainUsuario extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonNuevoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonNuevoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonImportar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonModificarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonModificarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonNuevoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEditUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -961,12 +968,6 @@ public class MainUsuario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonExportarActionPerformed
 
-    private void jButtonImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImportarActionPerformed
-        // TODO add your handling code here:
-        //Backup copia = new Backup();
-        //copia.importarDatos();
-    }//GEN-LAST:event_jButtonImportarActionPerformed
-
     private void jButtonModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarAlumnoActionPerformed
         ModificarAlumno modifica = new ModificarAlumno();
         modifica.arrancarModificarAlumno();
@@ -975,45 +976,6 @@ public class MainUsuario extends javax.swing.JFrame {
     private void jButtonGestionPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionPartesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGestionPartesActionPerformed
-
-    private void jButtonClearProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearProfeActionPerformed
-       
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextPane1.setText("");
-        
-    }//GEN-LAST:event_jButtonClearProfeActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jButtonBuscarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarProfeActionPerformed
-
-        String d = jTextField1.getText();
-        
-        if (d.length()> 9 || d.length()==0){
-            JOptionPane.showMessageDialog(ventana,
-    "El DNI no es correcto.",
-    "Be careful!",
-    JOptionPane.WARNING_MESSAGE);
-            
-        } else {
-        consulta = new Query();
-        String[] campos = new String[20];
-        
-        campos = consulta.getDatosProfesor(d);
-        
-        jTextField2.setText(campos[0]);
-        jTextField3.setText(campos[1]);
-        jTextField4.setText(campos[2]);
-        jTextPane1.setText(campos[3]);
-        
-        }
-        
-    }//GEN-LAST:event_jButtonBuscarProfeActionPerformed
 
     private void jButtonBuscarJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarJefActionPerformed
 
@@ -1079,9 +1041,18 @@ public class MainUsuario extends javax.swing.JFrame {
 
     private void jButtonModificarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarUserActionPerformed
         consulta = new Query();
-        consulta.modificarUsuario(jTextField15.getText(), jTextField16.getText());
-       this.setContentPane(jPanel4);
-       this.pack();
+        if (jTextField15.getText()== "" || jTextField16.getText()==""){
+             JOptionPane.showMessageDialog(ventana = new JDialog(),
+    "Introduzca ambos campos.",
+    "Usuarios",
+    JOptionPane.ERROR_MESSAGE);
+        } else {
+            consulta.modificarUsuario(jTextField15.getText(), jTextField16.getText());
+            this.setContentPane(jPanel4);
+            this.pack();
+        }
+        
+       
     }//GEN-LAST:event_jButtonModificarUserActionPerformed
 
     private void jButtonBorrarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarUserActionPerformed
@@ -1128,61 +1099,6 @@ public class MainUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButtonAddFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFaltaActionPerformed
-        consulta = new Query();
-        String faltas;
-       faltas = consulta.getFaltas(jTextField1.getText());
-       
-       int faltinas = Integer.parseInt(faltas);
-       
-       faltinas++;
-       
-       consulta.modificarFaltas(faltinas, jTextField1.getText());
-       
-        String[] campos = new String[20];
-        String d = jTextField1.getText();
-        campos = consulta.getDatosProfesor(d);
-        
-        jTextField2.setText(campos[0]);
-        jTextField3.setText(campos[1]);
-        jTextField4.setText(campos[2]);
-        jTextPane1.setText(campos[3]);
-        
-    }//GEN-LAST:event_jButtonAddFaltaActionPerformed
-
-    private void jButtonDeleteFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteFaltaActionPerformed
-       consulta = new Query();
-        String faltas;
-       faltas = consulta.getFaltas(jTextField1.getText());
-       
-       int faltinas = Integer.parseInt(faltas);
-       
-       faltinas--;
-       
-       if(faltinas>=0){
-           consulta.modificarFaltas(faltinas, jTextField1.getText());
-       
-        String[] campos = new String[20];
-        String d = jTextField1.getText();
-        campos = consulta.getDatosProfesor(d);
-        
-        jTextField2.setText(campos[0]);
-        jTextField3.setText(campos[1]);
-        jTextField4.setText(campos[2]);
-        jTextPane1.setText(campos[3]);
-       }
-       
-      
-    }//GEN-LAST:event_jButtonDeleteFaltaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String dni = jTextField1.getText();
-        String observaciones = jTextPane1.getText();
-        consulta = new Query();
-        consulta.modificarObservaciones(dni, observaciones);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButtonListaAlumnosJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaAlumnosJefActionPerformed
         // TODO add your handling code here:
         
@@ -1204,14 +1120,113 @@ public class MainUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
 
+    private void jButtonDeleteFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteFaltaActionPerformed
+        consulta = new Query();
+        String faltas;
+        faltas = consulta.getFaltas(jTextField1.getText());
+
+        int faltinas = Integer.parseInt(faltas);
+
+        faltinas--;
+
+        if(faltinas>=0){
+            consulta.modificarFaltas(faltinas, jTextField1.getText());
+
+            String[] campos = new String[20];
+            String d = jTextField1.getText();
+            campos = consulta.getDatosProfesor(d);
+
+            jTextField2.setText(campos[0]);
+            jTextField3.setText(campos[1]);
+            jTextField4.setText(campos[2]);
+            jTextPane1.setText(campos[3]);
+        }
+
+    }//GEN-LAST:event_jButtonDeleteFaltaActionPerformed
+
+    private void jButtonAddFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFaltaActionPerformed
+        consulta = new Query();
+        String faltas;
+        faltas = consulta.getFaltas(jTextField1.getText());
+
+        int faltinas = Integer.parseInt(faltas);
+
+        faltinas++;
+
+        consulta.modificarFaltas(faltinas, jTextField1.getText());
+
+        String[] campos = new String[20];
+        String d = jTextField1.getText();
+        campos = consulta.getDatosProfesor(d);
+
+        jTextField2.setText(campos[0]);
+        jTextField3.setText(campos[1]);
+        jTextField4.setText(campos[2]);
+        jTextPane1.setText(campos[3]);
+
+    }//GEN-LAST:event_jButtonAddFaltaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String dni = jTextField1.getText();
+        String observaciones = jTextPane1.getText();
+        consulta = new Query();
+        consulta.modificarObservaciones(dni, observaciones);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonClearProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearProfeActionPerformed
+
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextPane1.setText("");
+
+    }//GEN-LAST:event_jButtonClearProfeActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButtonBuscarProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarProfeActionPerformed
+
+        String d = jTextField1.getText();
+
+        if (d.length()> 9 || d.length()==0){
+            JOptionPane.showMessageDialog(ventana,
+                "El DNI no es correcto.",
+                "Be careful!",
+                JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            consulta = new Query();
+            String[] campos = new String[20];
+
+            campos = consulta.getDatosProfesor(d);
+
+            jTextField2.setText(campos[0]);
+            jTextField3.setText(campos[1]);
+            jTextField4.setText(campos[2]);
+            jTextPane1.setText(campos[3]);
+
+        }
+
+    }//GEN-LAST:event_jButtonBuscarProfeActionPerformed
+
     private void jButtonPonerNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPonerNotasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPonerNotasActionPerformed
 
+    private void jButtonHGuardiasProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHGuardiasProfeActionPerformed
+        // TODO add your handling code here:
+
+        consulta.imprimirAlumnos();
+    }//GEN-LAST:event_jButtonHGuardiasProfeActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public  void arrancarProfe(final int tipo, final JFrame l) {
+    public  void arrancarProfe(final int tipo, final LoginVentana l) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1266,14 +1281,12 @@ public class MainUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonFechaExJef;
     private javax.swing.JButton jButtonGestionPartes;
     private javax.swing.JButton jButtonHGuardiasProfe;
-    private javax.swing.JButton jButtonImportar;
     private javax.swing.JButton jButtonListaAlumnosJef;
     private javax.swing.JButton jButtonModificarAlumno;
     private javax.swing.JButton jButtonModificarUser;
     private javax.swing.JButton jButtonNuevoAlumno;
     private javax.swing.JButton jButtonNuevoUser;
     private javax.swing.JButton jButtonPonerNotas;
-    private javax.swing.JButton jButtonReservaAula;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private com.toedter.calendar.JCalendar jCalendar5;
@@ -1296,6 +1309,8 @@ public class MainUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

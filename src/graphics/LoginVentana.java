@@ -22,7 +22,7 @@ import source.User;
  */
 public class LoginVentana extends javax.swing.JFrame {
     private JDialog ventana;
-    
+    public String nombre="";
     /**
      * Creates new form LoginFrame
      */
@@ -239,7 +239,7 @@ public class LoginVentana extends javax.swing.JFrame {
     final User user = new User();
     user.setNickname(jTextLogin.getText());
     user.setPassword(jPasswd.getText());
-            
+    nombre = user.getNickname();
     Query c = new Query();
     String contraseñaUsuario = c.getContraseña(user.getNickname());
             
@@ -273,6 +273,10 @@ public class LoginVentana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLoginActionPerformed
 
+    
+    public String getNombre(){
+        return nombre; 
+    }
     /**
      * @param args the command line arguments
      */
