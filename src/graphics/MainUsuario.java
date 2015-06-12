@@ -10,7 +10,9 @@ import com.itextpdf.text.DocumentException;
 import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.help.HelpBroker;
@@ -1245,9 +1247,15 @@ public class MainUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPonerNotasActionPerformed
 
     private void jButtonHGuardiasProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHGuardiasProfeActionPerformed
-        // TODO add your handling code here:
+       try {
+           // TODO add your handling code here:
 
-        consulta.imprimirAlumnos();
+           consulta.imprimirAlumnos();
+       } catch (IOException ex) {
+           Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (SQLException ex) {
+           Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_jButtonHGuardiasProfeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

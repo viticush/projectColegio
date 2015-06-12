@@ -6,6 +6,9 @@
 
 package source;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -178,16 +181,36 @@ public class Query {
         
         
     }
-    public void imprimirAlumnos(){
+    public void imprimirAlumnos() throws IOException, SQLException{
+        ResultSet consulta = null;
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        //int counter = 0;
+        fichero = new FileWriter("D:/prueba_"+contador+".txt");
+        pw = new PrintWriter(fichero);
         
-        String ruta = "/home/pi/listados/resultado_"+contador+".txt";
-        try {
-            conexionBaseDeDatos
-                    .consultar("SELECT * INTO OUTFILE '"+ruta+"' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY ''LINES TERMINATED BY '\n' FROM alumnos;");
-                    
-        } catch (SQLException ex) {
-            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        /*consulta = conexionBaseDeDatos.consultar("select count(*) from alumnos");
+        int numFilas = consulta.getIngetInt(1);
+        System.out.println(numFilas);*/
+        consulta = conexionBaseDeDatos.consultar("select * from alumnos");
+        do{
+         
+        consulta.next();
+        pw.printf("---------------------------------------------------------------------------------------------------------------------------------------------%n%n%n");
+        pw.printf("DNI: "+consulta.getString("dni")+"%n"
+                  +"Nombre: "+consulta.getString("nombre")+"%n"
+                  +"Apellidos: "+consulta.getString("apellidos")+"%n"
+                  +"Domicilio: "+consulta.getString("domicilio")+"%n"
+                  +"Teléfono: "+consulta.getString("telefono")+"%n"
+                  +"Fecha de nacimiento: "+consulta.getString("fecha_nacimiento")+"%n"
+                  +"Faltas de asistencia: "+consulta.getString("faltas")+"%n"
+                  +"Curso: "+consulta.getString("curso")+"%n"
+                  +"Partes de expulsión: "+consulta.getString("partes_expulsion")+"%n"
+                  +"Asignaturas: "+consulta.getString("asignaturas")+"%n%n%n"
+        );
+        //counter++;
+        }while(consulta.next());
+        fichero.close();
         contador++;
     }
     
@@ -271,7 +294,7 @@ public class Query {
             resultado[4] = consulta.getString("educacion_fisica");
             resultado[5] = consulta.getString("musica");
             resultado[6] = consulta.getString("plastica");
-            resultado[7] = consulta.getString("lectura/estudio");
+            resultado[7] = consulta.getString("lectura_estudio");
             resultado[8] = consulta.getString("curso");
                       
         } catch (SQLException ex) {
@@ -285,11 +308,15 @@ public class Query {
         ResultSet curso = null;
         boolean resultado = false;
         try {
-            curso  = conexionBaseDeDatos.consultar("select curso from alumnos where dni='"+dni+"'");
-           
+            curso  = conexionBaseDeDatos.consultar("select * from alumnos where dni='"+dni+"'");
+            curso.next();
+            String cursoAlumno = curso.getString("curso");
+            
+            int num = Integer.parseInt(cursoAlumno.charAt(0)+"");
+            System.out.println(num);
             //TODO falla la consulta
             resultado = conexionBaseDeDatos
-                    .ejecutar("insert into notas (id, matematicas, lengua, conocimiento_del_medio, ingles, educacion_fisica, musica, plastica, lectura/estudio, curso) values ('"+dni+"', -1, -1, -1, -1, -1, -1, -1, -1,"+curso+")");
+                    .ejecutar("insert into notas (id, matematicas, lengua, conocimiento_del_medio, ingles, educacion_fisica, musica, plastica, lectura_estudio, curso) values ('"+dni+"', -1, -1, -1, -1, -1, -1, -1, -1,"+num+")");
         } catch (SQLException ex) {
             Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -297,7 +324,23 @@ public class Query {
         
     }
     
-    
+    public boolean actualizarNotas(String[] dato, String dni){
+        int[] datos= new int[8];
+        for (int i = 0; i< dato.length; i++){
+            datos[i]= Integer.parseInt(dato[i]);
+        }
+        boolean resultado = false;
+        try {
+            resultado = conexionBaseDeDatos
+                    .ejecutar("update notas set matematicas ='"+datos[0]+"', lengua ='"+datos[1]+"', conocimiento_del_medio ='"+datos[2]+"', ingles ='"+datos[3]+"', educacion_fisica ='"+datos[4]+"', "
+                            + "musica ='"+datos[5]+"', plastica ='"+datos[6]+"', lectura_estudio ='"+datos[7]+"'  where id='"+dni+"'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Query.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return resultado;
+        
+        
+    }
     
     
     //PENDIENTE DE HACER
