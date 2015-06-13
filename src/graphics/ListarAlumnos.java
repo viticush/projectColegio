@@ -101,7 +101,7 @@ public class ListarAlumnos extends javax.swing.JFrame {
         // TODO add your handling code here:
         String curso = jTextField1.getText();
         Query consulta = new Query();
-        String[] datos = new String[3];
+        String datos="" ;
         String all = "todas";
         if (curso.equals(all)){
             try {           
@@ -110,15 +110,15 @@ public class ListarAlumnos extends javax.swing.JFrame {
                 Logger.getLogger(ListarAlumnos.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            jTextArea1.setText(datos[0]+ ", " +  datos[1] +", "+ datos[2]+"\n");
+            jTextArea1.setText(datos);
         } else {
             try {            
-                consulta.listarAlumnos(curso);
+                datos=consulta.listarAlumnos(curso);
             } catch (SQLException ex) {
                 Logger.getLogger(ListarAlumnos.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            jTextArea1.setText(datos[0]+ ", " +  datos[1] +", "+ datos[2]+"\n");
+            jTextArea1.setText(datos);
         }
         
         

@@ -189,9 +189,10 @@ public class Query {
         consulta = conexionBaseDeDatos.consultar("select * from alumnos");
         ExportPDF listaAlumnos = new ExportPDF();
         String lista ="";
+         consulta.next();
         do{
          
-        consulta.next();
+       
         
         
         lista +=  "---------------------------------------------------------------------------------------------------------------\n"+
@@ -342,38 +343,39 @@ public class Query {
     
     
     
-    public String[] listarAlumnos (String curso) throws SQLException{
+    public String listarAlumnos (String curso) throws SQLException{
         ResultSet consulta;
-        String[] resultado = new String[3];
-        
+        String solucion = "";
+        System.out.println(curso);
             consulta = conexionBaseDeDatos.consultar("select * from alumnos where curso='"+curso+"'");
-            consulta.next();
+             consulta.next();
+                do{
+                
+                 solucion += consulta.getString("dni") +" "+ consulta.getString("nombre")+" "+consulta.getString("apellidos")
+                         +"\n";
+                }while(consulta.next());
             
-            resultado[0] = consulta.getString("dni");
-            resultado[1] = consulta.getString("nombre");
-            resultado[2] = consulta.getString("apellidos");
-            
-            
-        return resultado;
+        
+        
+        return solucion;
         
     }
     
-     public String[] listarAlumnosT() throws SQLException{
+     public String listarAlumnosT() throws SQLException{
         ResultSet consulta;
-        String[] resultado = new String[3];
+        String solucion="";
         
             consulta = conexionBaseDeDatos.consultar("select * from alumnos");
-           
+           consulta.next();
+                do{
                 
-                consulta.next();
-                resultado[0] = consulta.getString("dni");
-                resultado[1] = consulta.getString("nombre");
-                resultado[2] = consulta.getString("apellidos");
-           
+                 solucion += consulta.getString("dni")+" "+ consulta.getString("nombre")+" "+consulta.getString("apellidos")
+                         +"\n";
+                }while(consulta.next());
             
         
         
-        return resultado;
+        return solucion;
         
     }
     
