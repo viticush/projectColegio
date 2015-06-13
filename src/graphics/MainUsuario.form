@@ -414,7 +414,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonFechaExJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="jButtonConsultaGuardiaJef" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonGenerarBoletinJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Component id="jButtonListaAlumnosJef" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -428,7 +428,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jButtonConsultaGuardiaJef" alignment="0" pref="38" max="32767" attributes="0"/>
+                          <Component id="jButtonGenerarBoletinJef" alignment="0" pref="38" max="32767" attributes="0"/>
                           <Component id="jButtonFechaExJef" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButtonGestionPartes" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButtonConsultaNotasJef" alignment="0" max="32767" attributes="0"/>
@@ -460,12 +460,12 @@
                 <Property name="text" type="java.lang.String" value="Fechas ex&#xe1;men"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonConsultaGuardiaJef">
+            <Component class="javax.swing.JButton" name="jButtonGenerarBoletinJef">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Generar boletin"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultaGuardiaJefActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGenerarBoletinJefActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonListaAlumnosJef">

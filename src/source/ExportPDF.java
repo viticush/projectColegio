@@ -20,28 +20,22 @@ import java.io.FileNotFoundException;
  * @author Y
  */
 public class ExportPDF {
-    
-    Query consulta = new Query();
-    
-    public void crearPDF() throws FileNotFoundException, DocumentException{
-        FileOutputStream archivo = new FileOutputStream("D:/boletinNotas.pdf");
-      Document documento = new Document();
+    Document documento = new Document();
+    public ExportPDF() throws FileNotFoundException, DocumentException{
+      FileOutputStream archivo = new FileOutputStream("D:/listaAlumnos.pdf");
+      
       
       PdfWriter.getInstance(documento, archivo);
+}
+    
         
+    Query consulta = new Query();
+    
+    public void crearPDF(String texto) throws FileNotFoundException, DocumentException{
+      
       documento.open();
         
-     /* documento.add(new Paragraph("Nombre - Matematicas - Lengua - Conocimiento del Medio - Ingles - Educacion Fisica - Musica - Plastica - Lectura/Estudio"));
-        
-      documento.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
-      String[][] notas = consulta.generarBoletinNotas();
-      documento.add(new Paragraph(notas[0][0]));
-      /*for(int i = 0; i<notas.length;i++){
-          documento.add(new Paragraph(notas[i][0] + " - " + notas[i][1] + " - " + notas[i][2] 
-                  + " - " + notas[i][3] + " - " + notas[i][4] + " - " + notas[i][5] + " - " + notas[i][6] + " - " 
-                  + notas[i][7] + " - " + notas[i][8] + " - "));
-      }
-      */documento.add(new Paragraph("---------------------------------------------------------------------------------------------------------------------------------"));
+      documento.add(new Paragraph(texto));
       documento.close();
       
     }

@@ -6,6 +6,8 @@
 
 package source;
 
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -181,36 +183,32 @@ public class Query {
         
         
     }
-    public void imprimirAlumnos() throws IOException, SQLException{
+    public void imprimirAlumnos() throws IOException, SQLException, FileNotFoundException, DocumentException{
         ResultSet consulta = null;
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        //int counter = 0;
-        fichero = new FileWriter("D:/prueba_"+contador+".txt");
-        pw = new PrintWriter(fichero);
         
-        /*consulta = conexionBaseDeDatos.consultar("select count(*) from alumnos");
-        int numFilas = consulta.getIngetInt(1);
-        System.out.println(numFilas);*/
         consulta = conexionBaseDeDatos.consultar("select * from alumnos");
+        ExportPDF listaAlumnos = new ExportPDF();
+        String lista ="";
         do{
          
         consulta.next();
-        pw.printf("---------------------------------------------------------------------------------------------------------------------------------------------%n%n%n");
-        pw.printf("DNI: "+consulta.getString("dni")+"%n"
-                  +"Nombre: "+consulta.getString("nombre")+"%n"
-                  +"Apellidos: "+consulta.getString("apellidos")+"%n"
-                  +"Domicilio: "+consulta.getString("domicilio")+"%n"
-                  +"Teléfono: "+consulta.getString("telefono")+"%n"
-                  +"Fecha de nacimiento: "+consulta.getString("fecha_nacimiento")+"%n"
-                  +"Faltas de asistencia: "+consulta.getString("faltas")+"%n"
-                  +"Curso: "+consulta.getString("curso")+"%n"
-                  +"Partes de expulsión: "+consulta.getString("partes_expulsion")+"%n"
-                  +"Asignaturas: "+consulta.getString("asignaturas")+"%n%n%n"
-        );
-        //counter++;
+        
+        
+        lista +=  "---------------------------------------------------------------------------------------------------------------\n"+
+                    "DNI: "+consulta.getString("dni")+"\n"
+                  +"Nombre: "+consulta.getString("nombre")+"\n"
+                  +"Apellidos: "+consulta.getString("apellidos")+"\n"
+                  +"Domicilio: "+consulta.getString("domicilio")+"\n"
+                  +"Teléfono: "+consulta.getString("telefono")+"\n"
+                  +"Fecha de nacimiento: "+consulta.getString("fecha_nacimiento")+"\n"
+                  +"Faltas de asistencia: "+consulta.getString("faltas")+"\n"
+                  +"Curso: "+consulta.getString("curso")+"\n"
+                  +"Partes de expulsión: "+consulta.getString("partes_expulsion")+"\n"
+                  +"Asignaturas: "+consulta.getString("asignaturas")+"\n\n";
+        
+        
         }while(consulta.next());
-        fichero.close();
+        listaAlumnos.crearPDF(lista);
         contador++;
     }
     
@@ -343,23 +341,51 @@ public class Query {
     }
     
     
-    //PENDIENTE DE HACER
-    public boolean listarAlumnos (String[] datos){
-        boolean resultado = false;
+    
+    public String[] listarAlumnos (String curso) throws SQLException{
+        ResultSet consulta;
+        String[] resultado = new String[3];
+        
+            consulta = conexionBaseDeDatos.consultar("select * from alumnos where curso='"+curso+"'");
+            consulta.next();
+            
+            resultado[0] = consulta.getString("dni");
+            resultado[1] = consulta.getString("nombre");
+            resultado[2] = consulta.getString("apellidos");
+            
+            
+        return resultado;
+        
+    }
+    
+     public String[] listarAlumnosT() throws SQLException{
+        ResultSet consulta;
+        String[] resultado = new String[3];
+        
+            consulta = conexionBaseDeDatos.consultar("select * from alumnos");
+           
+                
+                consulta.next();
+                resultado[0] = consulta.getString("dni");
+                resultado[1] = consulta.getString("nombre");
+                resultado[2] = consulta.getString("apellidos");
+           
+            
+        
+        
         return resultado;
         
     }
     
     
     
-    
-    
+    //PENDIENTE DE HACER
     //PENDIENTE DE PROBAR
     
     public String generarBoletinNotas(int curso){
         ResultSet consulta = null;
         String result = null;
-        
+       
         try {
             consulta = conexionBaseDeDatos.consultar("select * from notas where curso='"+curso+"'");
         } catch (SQLException ex) {

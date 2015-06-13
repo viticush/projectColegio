@@ -103,7 +103,7 @@ public class MainUsuario extends javax.swing.JFrame {
         jButtonConsultaNotasJef = new javax.swing.JButton();
         jButtonGestionPartes = new javax.swing.JButton();
         jButtonFechaExJef = new javax.swing.JButton();
-        jButtonConsultaGuardiaJef = new javax.swing.JButton();
+        jButtonGenerarBoletinJef = new javax.swing.JButton();
         jButtonListaAlumnosJef = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -378,10 +378,10 @@ public class MainUsuario extends javax.swing.JFrame {
 
         jButtonFechaExJef.setText("Fechas exámen");
 
-        jButtonConsultaGuardiaJef.setText("Generar boletin");
-        jButtonConsultaGuardiaJef.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGenerarBoletinJef.setText("Generar boletin");
+        jButtonGenerarBoletinJef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultaGuardiaJefActionPerformed(evt);
+                jButtonGenerarBoletinJefActionPerformed(evt);
             }
         });
 
@@ -532,7 +532,7 @@ public class MainUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonFechaExJef)
                         .addGap(45, 45, 45)
-                        .addComponent(jButtonConsultaGuardiaJef)
+                        .addComponent(jButtonGenerarBoletinJef)
                         .addGap(47, 47, 47)
                         .addComponent(jButtonListaAlumnosJef)
                         .addGap(75, 75, 75))))
@@ -542,7 +542,7 @@ public class MainUsuario extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonConsultaGuardiaJef, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jButtonGenerarBoletinJef, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(jButtonFechaExJef, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonGestionPartes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonConsultaNotasJef, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -998,7 +998,8 @@ public class MainUsuario extends javax.swing.JFrame {
     private void jButtonGestionPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionPartesActionPerformed
         // TODO add your handling code here:
         PartesExp expulsion = new PartesExp();
-        expulsion.setVisible(true);
+        //expulsion.setVisible(true);
+        expulsion.arrancar();
     }//GEN-LAST:event_jButtonGestionPartesActionPerformed
 
     private void jButtonBuscarJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarJefActionPerformed
@@ -1128,7 +1129,8 @@ public class MainUsuario extends javax.swing.JFrame {
 
     private void jButtonListaAlumnosJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaAlumnosJefActionPerformed
         // TODO add your handling code here:
-        
+        ListarAlumnos al = new ListarAlumnos();
+        al.arrancarListAl();
     }//GEN-LAST:event_jButtonListaAlumnosJefActionPerformed
 
     private void jButtonNuevoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoAlumnoActionPerformed
@@ -1248,9 +1250,15 @@ public class MainUsuario extends javax.swing.JFrame {
 
     private void jButtonHGuardiasProfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHGuardiasProfeActionPerformed
        try {
-           // TODO add your handling code here:
+           try {
+               // TODO add your handling code here:
 
-           consulta.imprimirAlumnos();
+               consulta.imprimirAlumnos();
+           } catch (FileNotFoundException ex) {
+               Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (DocumentException ex) {
+               Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
        } catch (IOException ex) {
            Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
        } catch (SQLException ex) {
@@ -1264,17 +1272,17 @@ public class MainUsuario extends javax.swing.JFrame {
         this.pack();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButtonConsultaGuardiaJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultaGuardiaJefActionPerformed
+    private void jButtonGenerarBoletinJefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarBoletinJefActionPerformed
         // TODO add your handling code here:
-        ExportPDF p = new ExportPDF();
+        /*ExportPDF p = new ExportPDF();
        try {
-           p.crearPDF();
+           p.crearPDF("bla");
        } catch (FileNotFoundException ex) {
            Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
        } catch (DocumentException ex) {
            Logger.getLogger(MainUsuario.class.getName()).log(Level.SEVERE, null, ex);
-       }
-    }//GEN-LAST:event_jButtonConsultaGuardiaJefActionPerformed
+       }*/
+    }//GEN-LAST:event_jButtonGenerarBoletinJefActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1327,12 +1335,12 @@ public class MainUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscarProfe;
     private javax.swing.JButton jButtonClearJef;
     private javax.swing.JButton jButtonClearProfe;
-    private javax.swing.JButton jButtonConsultaGuardiaJef;
     private javax.swing.JButton jButtonConsultaNotasJef;
     private javax.swing.JButton jButtonDeleteFalta;
     private javax.swing.JButton jButtonEditUser;
     private javax.swing.JButton jButtonExportar;
     private javax.swing.JButton jButtonFechaExJef;
+    private javax.swing.JButton jButtonGenerarBoletinJef;
     private javax.swing.JButton jButtonGestionPartes;
     private javax.swing.JButton jButtonHGuardiasProfe;
     private javax.swing.JButton jButtonListaAlumnosJef;
